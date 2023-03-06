@@ -1,0 +1,25 @@
+<div class="userContainer">
+    <app-header name="User"></app-header>
+    <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
+        <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
+    </div>
+    <h5>ShrowRoom Name</h5>
+    <button (click)="start()" class="btn btn-info">Start</button>
+    <button (click)="stop()" class="btn btn-info">Stop</button>
+    <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->
+    <div class="dataContainer" *ngFor="let image of datas | paginate :{
+        itemsPerPage:5,
+        currentPage:page,
+        totalItems:totalRecords}">
+        <img (click)="bigImage(image)" src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg"
+            alt="">
+        <p class="numberPlate">{{this.image.numberPlate}}</p>
+        <p class="timestamp">{{this.image.timeStamp}}</p>
+        <p class="timestamp">Any</p>
+        <!-- <div class="checker">
+            <button class="correct" (click)="correct()">Correct</button>
+            <button class="wrong" (click)="wrong()">Wrong</button>
+        </div> -->
+    </div>
+</div>
+<pagination-controls class="pageControls" (pageChange)="page= $event"></pagination-controls>

@@ -1,0 +1,15 @@
+<div class="registerContainer">
+    <h3>Edit Details</h3>
+    <form action="" class="registerForm" [formGroup]="registerForm">
+        <input type="text" placeholder="username" formControlName="username">
+        <input type="text" placeholder="Enter password" formControlName="password">
+        <input type="text" placeholder="Enter email" formControlName="mailid">
+        <input type="text" placeholder="Enter phone number" formControlName="phonenumber">
+        <input type="text" placeholder="Enter showroom" formControlName="showroom">
+        <!-- <input type="text" placeholder="Enter Post" formControlName="post"> -->
+        <select name="designation" formControlName="designation" (change)="selected()">
+            <option *ngFor="let item of data" [value]="item.name">{{item.name}}</option>
+        </select>
+        <button type="button" (click)="createAccount()">Edit</button>
+    </form>
+</div>

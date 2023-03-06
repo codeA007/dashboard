@@ -1,0 +1,4 @@
+<div class="errorContainer" [ngStyle]="{'display': (displayStatus=='true') ? 'flex' : 'none'}">
+    <p>{{errorMessage}}</p>
+    <button (click)="retryBtn.emit()">Retry</button>
+</div>

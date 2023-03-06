@@ -1,0 +1,50 @@
+<div *ngIf="show==true; else elseBlock">
+    <app-loading [show]=show></app-loading>
+</div>
+<ng-template #elseBlock>
+
+    <div class="superAdminContainer">
+        <div (click)="hide($event)" class="modalContainer"
+            [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
+            <div class="modalBoxContainer">
+                <img src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg" alt="">
+                <form action="" class="editNumberPlate" [formGroup]="editNo">
+                    <p>Before:: {{this.numberPlate}}</p>
+                    <input [(ngModel)]="this.numberPlate" class="editinput" type="text" formControlName="number">
+                </form>
+                <button class="done" (click)="done()">Done</button>
+                <div class="controls">
+                    <fa-icon class="previous" (click)="previous()" [icon]="faArrowLeft"
+                        [style]="{'display': (this.displayPreBtn==true)?'block':'none'}"></fa-icon>
+                    <fa-icon (click)="next()" class="next" [icon]="faArrow"
+                        [style]="{'display': (this.displayNextBtn==true)?'block':'none'}"></fa-icon>
+                </div>
+            </div>
+        </div>
+        <app-header name="SuperAdmin"></app-header>
+        <!-- <div class="selector">
+            <p routeLink="/" class="four">Add Showroom</p>
+        </div> -->
+        <h5>ShrowRoom Name</h5>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">vehicle Img </th>
+                    <th scope="col">NoPlate Img </th>
+                    <th scope="col">Vehicle No</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Any</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+        </table>
+        <div class="dataContainer" *ngFor="let image of this.datas;index as i;">
+            <img src="{{image.imageUrl}}" alt="">
+            <img src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg" alt="">
+            <p class="numberPlate">{{this.image.numberPlate}}</p>
+            <p class="timestamp">{{this.image.timeStamp}}</p>
+            <p class="timestamp">Any</p>
+            <p [style]="{'display': (this.editBtn==true)?'block':'none'}" (click)="edit(image)" class="edit">Edit</p>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,58 @@
+<!-- <div *ngIf="show==true; else elseBlock">
+    <app-loading [show]=show></app-loading>
+</div>
+<ng-template #elseBlock> -->
+<div class="fabricContainer">
+    <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
+    <p class="error" [ngStyle]="{background:color}">{{check}}</p>
+    <!-- <h4>Text</h4> -->
+    <div class="loadingContainer" [ngStyle]="{'display': (show==true) ?'block' : 'none'}">
+        <div class="loadingBoxContainer">
+            <img src="https://cdn.dribbble.com/users/2973561/screenshots/5757826/loading__.gif" alt="">
+        </div>
+    </div>
+    <app-header name="Admin"></app-header>
+    <p>Create Polygon on Image</p>
+    <!-- <input type="file" id="file" (change)="selectFile($event)" /> -->
+    <!-- <label for="file">Choose file</label> -->
+    <div class="buttonContainer">
+        <button id="edit" (click)="Edit()">
+            Edit Polygon
+        </button>
+        <br />
+        <!-- <button id="copy" (click)="copyCoords()" [disabled]="!isPolygonDrawn">
+            Copy Coordinates
+        </button> -->
+        <button (click)="saveImage()" download="image.png">Download </button>
+        <!-- <button (click)="editCo()">Reset Canvas</button> -->
+        <button (click)="reset()">Reset Canvas</button>
+        <button (click)="addName()">add Name</button>
+        <button (click)="submit()">Submit</button>
+        <button class="nameBtn" (click)="addNew()">Confirm</button>
+        <button (click)="delete()">Delete</button>
+        <!-- <button class="nameBtn" (click)="drawn()">confirm</button> -->
+        <hr />
+    </div>
+    <!-- <p style="font-size: 1rem;">Right Click To Confirm Polygon</p> -->
+    <!-- <p>{{1675405302480|date:'dd/mm/yyyy'}}</p> -->
+    <!-- <p>{{this.points}}</p> -->
+    <div class="imageContainer">
+        <canvas #canRef id="canvasID" width="600px" height="400px" style="object-fit: contain;"></canvas>
+    </div>
+    <div class="nameContainer" [ngStyle]="{'display': (displayName==true) ?'flex' : 'none'}">
+        <div class="nameBoxContainer">
+            <!-- <form action=""> -->
+            <p>Please Add Name</p>
+            <input type="text" [formControl]="name">
+            <button class="nameBtn" (click)="nameBtn()">Done</button>
+            <!-- </form> -->
+        </div>
+    </div>
+    <div class="list">
+        <div class="listContainer" *ngFor="let point of multiPoints; index as i">
+            <p>{{point.name}}</p>
+            <fa-icon class="delete" (click)="deleteROI(point)" [icon]="faTrash"></fa-icon>
+        </div>
+    </div>
+</div>
+<!-- </ng-template> -->

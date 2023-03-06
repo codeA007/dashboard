@@ -1,0 +1,73 @@
+.registerContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 350px;
+  background: #f1f2f6;
+  padding: 10px;
+  border-radius: 3px;
+}
+.registerForm input {
+  width: 100%;
+  margin: 7px 0;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 0;
+}
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+/* body {
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+} */
+.loginContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+}
+.loginform {
+  display: flex;
+  flex-direction: column;
+  width: 450px;
+  height: 350px;
+  background: #f1f2f6;
+  padding: 10px;
+  border-radius: 3px;
+}
+
+.loginContainer input {
+  width: 100%;
+  margin: 7px 0;
+  border-radius: 3px;
+  border: none;
+  padding: 10px 0;
+}
+button {
+  border: none;
+  background-color: #015aba;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 3px;
+  color: #fff;
+}
+h4 {
+  text-align: center;
+}
+p {
+  text-align: center;
+}
+a {
+  text-align: center;
+}

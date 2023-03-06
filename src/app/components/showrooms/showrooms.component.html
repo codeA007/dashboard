@@ -1,0 +1,56 @@
+<div class="showroomContainer">
+    <app-header name="SuperAdmin"></app-header>
+    <div class="options">
+        <a routerLink='/showroom/addShowroom' class="optionsBtn">Add ShowRoom</a>
+        <a routerLink='/showroom/addDelerShip' class="optionsBtn">Add Delarship</a>
+    </div>
+    <h3>Select showRoom Details</h3>
+    <div class="showroomContainerBtn">
+        <!-- <h4>4 Wheeler</h4>
+    <button class="select-btn" *ngFor="let name of this.names;index as i;"
+        (click)="showroom(this.name.name)">{{this.name.name}}</button>
+    <h4>2 Wheeler</h4>
+    <button class="select-btn" *ngFor="let name of this.names;index as i;"
+        (click)="showroom(this.name.name)">{{this.name.name}}</button> -->
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{delarShipName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="delarship(this.name.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block  drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{vType}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="typeBtn(this.type)" ngbDropdownItem
+                            *ngFor="let type of this.types;index as i;">{{type}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block  drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{showRoomName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="showroomName(this.name.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="details" (click)="sendShowRoom()">Submit</button>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap");
+h4 {
+  text-align: center;
+}
+.addCameraForm {
+  display: flex;
+  /* flex-direction: column; */
+  width: 100%;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.addCameraContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Nunito", sans-serif;
+  font-weight: bold;
+  overflow-x: hidden;
+}
+
+.addCameraForm input {
+  display: block;
+  /* width: 500px; */
+  min-width: 350px;
+  margin: 8px 0;
+  padding: 10px 5px;
+  border-radius: 3px;
+  border: none;
+  outline: none;
+  background-color: #f1f2f6;
+}
+h5 {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.submit {
+  display: block;
+  width: 250px;
+  border: none;
+  background: #015aba;
+  color: white;
+  border-radius: 3px;
+  padding: 8px 0;
+}
+.brand {
+  width: 800px;
+}
+
+.error {
+  text-align: center;
+  background: green;
+  position: absolute;
+  width: 100%;
+  color: white;
+  top: 0;
+  /* bottom: 0; */
+  margin: 0;
+  z-index: 500;
+}
+
+.submitDiv {
+  display: flex;
+  justify-content: space-around;
+}
+
+.submitDiv button {
+  width: 800px;
+}
+
+.orContain {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 800px;
+}
+
+.commanContainer input {
+  width: 800px;
+}

@@ -1,0 +1,9 @@
+<div class="modalContainer " (click)="hideModle()">
+    <div class="modalBoxContainer">
+        <lib-ngx-image-zoom class="zoom" (zoomScroll)="scroll($event)" (zoomPosition)="mouseMove($event)"
+            zoomMode="toggle-click" [thumbImage]=this.imgUrl [fullImage]=this.imgUrl [enableScrollZoom]=" true"
+            [scrollStepSize]="0.1" altText="img-not-found">
+        </lib-ngx-image-zoom>
+        <!-- <img src="{{imgUrl}}" alt=""> -->
+    </div>
+</div>

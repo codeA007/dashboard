@@ -1,0 +1,106 @@
+.dataContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100vw;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid;
+  margin: 10px 0;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 200px;
+}
+tr {
+  display: flex;
+  justify-content: space-around;
+}
+.dataContainer img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+.edit {
+  cursor: pointer;
+}
+.modalContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 100;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: space-around;
+}
+.modalBoxContainer {
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  top: 25%;
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  padding: 10px;
+  background: white;
+  border-radius: 5px;
+}
+.modalBoxContainer img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+.done {
+  width: 220px;
+  border-radius: 3px;
+  margin: 10px 0;
+  background-color: #2b2e4d;
+  color: white;
+}
+
+.controls {
+  /* display: flex; */
+  justify-content: space-between;
+  width: 95%;
+  /* position: absolute; */
+}
+.editinput {
+  border-radius: 3px;
+  border: #d9dadd 2px solid;
+  outline: none;
+  width: 220px;
+  padding: 8px;
+  background-color: rgb(241, 242, 247);
+}
+.previous {
+  position: absolute;
+  top: 40%;
+  left: 2%;
+}
+.next {
+  position: absolute;
+  top: 40%;
+  right: 2%;
+}
+.selector {
+  display: flex;
+  align-items: center;
+}
+.selector .four,
+.two {
+  padding: 7px 12px;
+  background-color: #a8d5e5;
+  border-radius: 3px;
+  margin: 10px 2px;
+  cursor: pointer;
+}
+
+fa-icon {
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* .selector .two {
+  padding: 10px 8px;
+  background-color: antiquewhite;
+  border-radius: 3px;
+  margin: 0px 2px;
+} */

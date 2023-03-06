@@ -1,0 +1,80 @@
+<app-header name="Admin"></app-header>
+<h4>Add Camera</h4>
+<div class="addCameraContainer">
+    <p class="error" [ngStyle]="{background:color}">{{check}}</p>
+    <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}"></app-error>
+    <from class="addCameraForm" action="" [formGroup]="addCamera">
+        <div class="commanContainer">
+            <div class="row">
+                <div class="col">
+                    <div ngbDropdown class="d-inline-block drop">
+                        <button type="button" class="brand btn btn-outline-primary" id="dropdownBasic1"
+                            ngbDropdownToggle>
+                            {{brandName}}
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="brand" (click)="brand(this.name.name)" ngbDropdownItem
+                                *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" placeholder="Camera Name" formControlName="cameraname">
+        </div>
+        <div class="orContainer">
+            <div class="orContain">
+                <div class="type1">
+                    <input required="true" type="text" placeholder="Enter IP address" formControlName="ipaddress"
+                        (input)="rtps()">
+                    <input type="text" placeholder="Enter Username" formControlName="username">
+                    <input type="text" placeholder="Enter Password" formControlName="password">
+                    <input type="text" placeholder="Enter PortNo" formControlName="port">
+                    <input type="text" placeholder="Enter Department" formControlName="department">
+                    <!-- <input type="text" placeholder="Enter Brand" formControlName="brand"> -->
+                </div>
+
+                <h5>OR</h5>
+                <div class="addCameraForm1">
+                    <!-- <form action="" [formGroup]="addRtps" class="addCameraForm"> -->
+
+                    <!-- <input type="text" placeholder="Camera Name" (input)="rtps()" formControlName="cameraName2"> -->
+                    <input type="text" placeholder="RTSP Link" (input)="rtps()" formControlName="RTSP">
+                </div>
+            </div>
+            <div class="submitDiv">
+                <button class="submit" [ngStyle]="{'display': (this.disableBtn==true) ? 'none' : 'block'}"
+                    class="submit" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </from>
+    <!-- <div>
+            <div class="row">
+                <div class="col">
+                    <div ngbDropdown class="d-inline-block drop">
+                        <button type="button" class="brand btn btn-outline-primary" id="dropdownBasic1"
+                            ngbDropdownToggle>
+                            {{brandName}}
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <button class="brand" (click)="brand(this.name.name)" ngbDropdownItem
+                                *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" placeholder="Enter IP address" formControlName="ipAdress" (input)="rtps()">
+            <input type="text" placeholder="Enter Username" formControlName="username">
+            <input type="text" placeholder="Enter Password" formControlName="password">
+            <input type="text" placeholder="Enter PortNo" formControlName="portNo">
+            <input type="text" placeholder="Enter Brand" formControlName="brand">
+
+        </div> -->
+
+    <!-- <button [ngStyle]="{'display': (this.disableBtn==true) ? 'none' : 'block'}" class="submit"
+            (click)="submit()">Submit</button> -->
+
+    <!-- 
+    </form> -->
+    <!-- </div> -->
+
+</div>

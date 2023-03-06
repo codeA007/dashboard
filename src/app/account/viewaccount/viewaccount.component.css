@@ -1,0 +1,22 @@
+.info {
+  background: #f1f2f6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.infoDetails {
+  margin: 10px 0;
+}
+
+a {
+  display: block;
+  text-align: center;
+  width: 150px;
+  border-radius: 3px;
+  border: none;
+  background: #70a1ff;
+  padding: 6px;
+  color: white;
+  text-decoration: none;
+}

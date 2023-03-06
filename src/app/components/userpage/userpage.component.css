@@ -1,0 +1,56 @@
+.userContainer {
+  margin-bottom: 35px;
+}
+.dataContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  border: 2px solid;
+  margin: 10px 0;
+}
+.dataContainer img {
+  width: 100px;
+  height: 100px;
+  object-fit: container;
+}
+
+.checker {
+  display: flex;
+  width: 150px;
+  justify-content: space-around;
+}
+.correct,
+.wrong {
+  border: none;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.wrong {
+  background-color: #ffd3cc;
+  color: #cc1a00;
+}
+.wrong:hover {
+  background-color: #cc1a00;
+  color: white;
+}
+.correct {
+  background-color: #e4ffcc;
+  color: #53b300;
+}
+.correct:hover {
+  background-color: #3c8000;
+  color: white;
+}
+.pageControls {
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  height: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  background: #f1f2f6;
+}

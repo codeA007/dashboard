@@ -1,0 +1,25 @@
+<!-- <div class="loginContainer">
+    <form action="" class="form" [FormGroup]="loginForm" (click)="login()">
+        <label for="">Username</label>
+        <input type="text" placeholder="Username" formControlName="username">
+        <label for="">Password</label>
+        <input type="text" placeholder="Password" formControlName="password">
+        <input type="submit" value="Save Task" class=" btn-block" />
+    </form>
+</div> -->
+
+<div class="loginContainer">
+    <form class="loginform" [formGroup]="addTodo">
+        <h4>Login user <fa-icon [icon]="faAddressCard"></fa-icon> </h4>
+        <label for="">Username</label>
+        <input type="text" placeholder="enter username" formControlName="username">
+        <!-- <input value="hi" type="text" placeholder="enter username" formControlName="username"
+            [(ngModel)]="this.username"> -->
+        <label for="">Password</label>
+        <input type="text" placeholder="Enter Password" formControlName="password">
+        <button (click)="add()">
+            Submit</button>
+        <p>OR</p>
+        <a routerLink='/register'>Create Account</a>
+    </form>
+</div>

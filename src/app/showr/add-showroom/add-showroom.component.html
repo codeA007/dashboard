@@ -1,0 +1,15 @@
+<div class="addShowroomContainer">
+    <!-- <app-header name="SuperAdmin"></app-header> -->
+    <form class="addShowroomForm" [formGroup]="addShowroom">
+        <h4>Add Showroom <fa-icon [icon]="faCar"></fa-icon></h4>
+        <input type="text" name="" placeholder="Delarship Name" id="" formControlName="delarShipName">
+        <input type="text" name="" placeholder="Add showroom name" id="" formControlName="showroomName">
+        <input type="text" name="" placeholder="Add Location" id="" formControlName="location">
+        <p>Latitude :{{latitude}} Longitude :{{longitude}}</p>
+
+        <button (click)="submitShowroomDetails()">Submit </button>
+    </form>
+    <div class="btnContainer">
+
+    </div>
+</div>

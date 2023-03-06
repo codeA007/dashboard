@@ -1,0 +1,38 @@
+.headerContainer {
+  width: 100%;
+  background-color: #015aba;
+  color: #fff;
+  padding: 3px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.headerContainer h3 {
+  padding-left: 10px;
+}
+.headerContainer .logout {
+  margin-right: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 8px 10px;
+  border-radius: 3px;
+  /* align-self: center; */
+}
+
+.logout:hover {
+  background-color: #d3eaf2;
+  color: black;
+}
+.controls {
+  display: flex;
+  justify-content: center;
+}
+
+fa-icon {
+  font-size: 18px;
+  /* font-size: 20px; */
+  padding: 8px 10px;
+  margin-right: 15px;
+  cursor: pointer;
+}

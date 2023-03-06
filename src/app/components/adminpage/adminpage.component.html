@@ -1,0 +1,51 @@
+<!-- <div class="modalContainer " (click)="hideModle()" [ngStyle]="{'display': (showImg==true) ?'block' : 'none'}">
+    <div class="modalBoxContainer">
+        <img src="{{imgUrl}}" alt="">
+    </div>
+</div> -->
+<div class="adminContainer">
+    <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
+        <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
+    </div>
+    <app-header name="Admin"></app-header>
+    <div class="selectorContainer">
+        <!-- <div class="selector">
+            <p class="four">4 Wheeler</p>
+            <p class="two">2 Wheeler</p>
+        </div> -->
+        <a routerLink='/results' class="addShowroom"> View Results <fa-icon [icon]="faPoll"></fa-icon></a>
+        <a routerLink='/addCamera' class="addShowroom">Add Camera <fa-icon [icon]="faCameraRetro"></fa-icon></a>
+        <a routerLink='/viewCamera' class="addShowroom"> View Cameras <fa-icon [icon]="faList"></fa-icon></a>
+        <!-- <button>Start ANPR</button> -->
+    </div>
+    <h3>Showroom name</h3>
+    <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->
+    <!-- <div class="dataContainer"> -->
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">vehicle Img </th>
+                <th scope="col">NoPlate Img </th>
+                <th scope="col">Vehicle No</th>
+                <th scope="col">Time</th>
+                <th scope="col">Any</th>
+            </tr>
+        </thead>
+    </table>
+
+    <div class="dataContainer" *ngFor="let image of datas | paginate :{
+    itemsPerPage:5,
+    currentPage:page,
+    totalItems:totalRecords }">
+
+        <img (click)="bigImage(image)" src=" {{image.imageUrl}}" alt="">
+        <img (click)="bigImage(image)" src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg"
+            alt="">
+        <p class="numberPlate">{{this.image.numberPlate |uppercase }}</p>
+        <p class="timestamp">{{this.image.timeStamp}}</p>
+        <p class="timestamp">Any</p>
+        <!-- </div> -->
+    </div>
+
+</div>
+<pagination-controls class="pageControls" (pageChange)="page= $event"></pagination-controls>

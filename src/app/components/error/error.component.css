@@ -1,0 +1,28 @@
+.errorContainer {
+  /* position: absolute;
+  top: 62px;
+  padding: 8px;
+  text-align: center;
+  width: 100%;
+  background: #ff6263;
+  color: white;
+  font-size: 18px;
+  z-index: 100; */
+  display: flex;
+  justify-content: space-around;
+  padding: 8px 0;
+  position: absolute;
+  width: 100%;
+  background: #f7d7da;
+  top: 10%;
+  color: red;
+  font-size: 18px;
+}
+
+button {
+  width: 150px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  background: #b9005b;
+}
