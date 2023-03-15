@@ -14,9 +14,24 @@ export class HeaderComponent {
 faUser=faUser;
 
 logout(){
+  this.authService.token =  localStorage.getItem('token');
+  console.log(this.authService.token,"logout");
+  
 this.authService.superAdmin = false; 
 this.authService.admin = false; 
 this.authService.user = false;
-this.router.navigate(['/login']);
+
+this.authService.logout().subscribe((data)=>{
+  console.log(data,"logout");
+  localStorage.removeItem('token');
+  if(data){
+    this.router.navigate(['/login']);
+  }
+},(err)=>{
+  if(err.error.msg=='Token has expired'){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
+})
 }
 }

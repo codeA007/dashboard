@@ -52,7 +52,9 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
     })
   }
   currentRouter = this.router.url;
-  ngOnInit(): void {
+  ngOnInit(): void { 
+
+    this.show=true;
     this.cameraService.getCoordinates(this.id).subscribe(data => {
       console.log(data.coordinates,"coooo");
       this.errorMessage ='';
@@ -119,6 +121,7 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
               strokeWidth: 2,
               stroke: 'green',
               scaleX: 1,
+              selectable:false,
               scaleY: 1,
               objectCaching: false,
               transparentCorners: false,
@@ -315,6 +318,7 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
       strokeWidth: 2,
       stroke: 'green',
       scaleX: 1,
+      selectable:false,
       scaleY: 1,
       objectCaching: false,
       transparentCorners: false,
@@ -388,7 +392,7 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
     // });
   }
   drawn(){
-    if (this.points.length < 1) {
+    if (this.points.length < 3) {
       this.isPolygonDrawn = false;
     } else {
       this.makePolygon();
@@ -520,16 +524,21 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
       // reader.readAsDataURL(file);
       // reader.onload = (event: any) => {
         // this.url ='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg';
-        this.canvas.setHeight(500);
-        this.canvas.setWidth(1280);
-        fabric.Image.fromURL('https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg', function(img:any) {
+        // this.canvas.setHeight(500);
+        // this.canvas.setWidth(1280);
+        fabric.Image.fromURL('https://learn.corel.com/wp-content/uploads/2022/01/thunderstorm-3440450_1280.jpg', (img:any)=> {
+          this.canvas.setHeight(img.height);
+          this.canvas.setWidth(img.width);
           canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {
             scaleX: canvas.width / img.width,
             scaleY: canvas.height / img.height
-          });
-        }.bind(this),{
-          crossOrigin: 'anonymous'
+          }
+          );
+      
         });
+        // .bind(this),{
+        //   crossOrigin: 'anonymous'
+        // }
       // };
       this.isImageDrawn = true;
     // }
@@ -698,7 +707,7 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
     poly.edit = !poly.edit;
     poly.edit = true;
     console.log(poly.points,"poly");
-    console.log(this.canvas.getObjects()[2],"loloklol")
+    console.log(this.canvas.getObjects()[1],"loloklol")
     
     if (poly.edit) {
       let lastControl = poly.points.length - 1;
@@ -937,8 +946,9 @@ let  data={
     
   }
   delete(){
-    console.log( );
-    this.canvas.getObjects().pop()
+    this.canvas.getObjects().slice(1,1);
+    console.log(   this.canvas.getObjects());
+    this.canvas.renderAll()
   // this.ngAfterViewInit()
   // this.ngOnInit()
     // this.polygon =null;

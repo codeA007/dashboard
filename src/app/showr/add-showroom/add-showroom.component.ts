@@ -27,14 +27,16 @@ ngOnInit(): void {
     console.log(position);
     this.latitude = position.coords.latitude;
     this.longitude =position.coords.longitude;
+
   })
 }
 
 submitShowroomDetails(){
-  console.log(this.addShowroom.value)
+  let newData = {...this.addShowroom.value,latitiude:this.latitude,longitude:this.longitude};
+ console.log(newData)
 console.log(this.authService.superAdmin);
-this.authService.loginAccount(this.addShowroom.value).subscribe(data=>{
-  console.log(data);
-})
+// this.authService.loginAccount(this.addShowroom.value).subscribe(data=>{
+//   console.log(data);
+// })
 }
 }

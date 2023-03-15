@@ -30,6 +30,7 @@ import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ErrorComponent } from './components/error/error.component';
 import { ZoomComponent } from './components/zoom/zoom.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import { ToastComponent } from './components/toast/toast.component';
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 
@@ -52,6 +53,7 @@ import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
     ViewCameraComponent,
     ErrorComponent,
     ZoomComponent,
+    ToastComponent,
  
     // EditImageComponent
   ],

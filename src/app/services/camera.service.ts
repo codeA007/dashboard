@@ -3,6 +3,11 @@ import {HttpClient,HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as Options from '../../assets/config.json';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    Authorization:`Bearer ${localStorage.getItem('token')}`
+  }),
+}
 @Injectable({
   providedIn: 'root'
 })
@@ -10,24 +15,31 @@ export class CameraService {
 
   constructor(private http: HttpClient) { }
   addCamera(data:Object):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/addCamera`,data)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/addCamera`,data,{headers:header})
   }
   checkCamera():Observable<any>{
     return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/checkcamera`)
   }
   editCamera(data:Object):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/editCamera`,data)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/editCamera`,data,
+    {headers:header})
   }
  viewCamera():Observable<any>{
-    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/viewCamera`)
+  let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/viewCamera`,{headers:header})
   }
   deleteCamera(data:Object):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/deleteCamera`,data)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/deleteCamera`,data,{headers:header})
   }
 geoFencing(data:Object):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/geoFencing`,data)
+  let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/geoFencing`,data,{headers:header})
   }
   getCoordinates(data:Object):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getCoordinates`,data)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getCoordinates`,data,{headers:header})
   }
 }

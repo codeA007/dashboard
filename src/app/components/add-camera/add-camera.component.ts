@@ -76,15 +76,21 @@ submit(){
       this.check = ''
     },1000)
     if(data.result == 'Successfully added camera!'){
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/viewCamera']);
     }
   },(err)=>{
-    this.errorMessage = err.message;
+    // console.log(err);
+    
+    this.errorMessage = err.statusText;
     this.errorDisplayStatus = true;
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   });
 }
 
-brand(brandName:any){
+brand(brandName:any){ 
   console.log(brandName);
   this.brandName =  brandName; 
 }

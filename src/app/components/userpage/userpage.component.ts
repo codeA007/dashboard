@@ -28,24 +28,24 @@ export class UserpageComponent implements OnInit {
     //     console.log(data);
     //   })
     // })
-    this.id =setInterval(()=>{
-       this.dataService.showUserData().subscribe(data => {
-        this.datas.unshift(
-          { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-            numberPlate:data.id,
-            timeStamp:'12:39PM',
-            id:'Any'
-          }
-        );
-      //  this.datas = [
-      //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-      //   numberPlate:data.todo,
-      //   timeStamp:'12:39PM',
-      //   id:'Any'
-      // }
-      //  ];
-      })
-    },2000)
+    // this.id =setInterval(()=>{
+    //    this.dataService.showUserData().subscribe(data => {
+    //     this.datas.unshift(
+    //       { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+    //         numberPlate:data.id,
+    //         timeStamp:'12:39PM',
+    //         id:'Any'
+    //       }
+    //     );
+    //   //  this.datas = [
+    //   //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+    //   //   numberPlate:data.todo,
+    //   //   timeStamp:'12:39PM',
+    //   //   id:'Any'
+    //   // }
+    //   //  ];
+    //   })
+    // },2000)
   
   }
 

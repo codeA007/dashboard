@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import{CameraService} from '../../services/camera.service';
 import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-camera',
@@ -31,6 +32,8 @@ export class ViewCameraComponent implements OnInit {
     department:new FormControl(''),
   });
   ngOnInit(){
+    console.log(`Bearer ${localStorage.getItem('token')}`);
+    
     this.show = true;
     this.cameraService.viewCamera().subscribe((data)=>{
       this.datas=data
@@ -40,7 +43,11 @@ export class ViewCameraComponent implements OnInit {
       this.errorMessage = err.statusText+'😢😥';      
       this.errorDisplayStatus = true;
       this.show = false;
-    })
+        if(err.error.msg=='Token has expired'){
+          localStorage.removeItem('token');
+          this.router.navigate(['/login']);
+        }
+    },)
 
     // this.timer = setInterval(()=>{
     //   this.cameraService.viewCamera().subscribe((data)=>{

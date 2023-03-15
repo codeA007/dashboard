@@ -16,9 +16,9 @@
     <!-- <input type="file" id="file" (change)="selectFile($event)" /> -->
     <!-- <label for="file">Choose file</label> -->
     <div class="buttonContainer">
-        <button id="edit" (click)="Edit()">
+        <!-- <button id="edit" (click)="Edit()">
             Edit Polygon
-        </button>
+        </button> -->
         <br />
         <!-- <button id="copy" (click)="copyCoords()" [disabled]="!isPolygonDrawn">
             Copy Coordinates
@@ -26,10 +26,10 @@
         <button (click)="saveImage()" download="image.png">Download </button>
         <!-- <button (click)="editCo()">Reset Canvas</button> -->
         <button (click)="reset()">Reset Canvas</button>
-        <button (click)="addName()">add Name</button>
-        <button (click)="submit()">Submit</button>
+        <!-- <button (click)="addName()">add Name</button>
+        <button (click)="submit()">Submit</button> -->
         <button class="nameBtn" (click)="addNew()">Confirm</button>
-        <button (click)="delete()">Delete</button>
+        <!-- <button (click)="delete()">Delete</button> -->
         <!-- <button class="nameBtn" (click)="drawn()">confirm</button> -->
         <hr />
     </div>
@@ -37,7 +37,7 @@
     <!-- <p>{{1675405302480|date:'dd/mm/yyyy'}}</p> -->
     <!-- <p>{{this.points}}</p> -->
     <div class="imageContainer">
-        <canvas #canRef id="canvasID" width="600px" height="400px" style="object-fit: contain;"></canvas>
+        <canvas #canRef id="canvasID" width="auto" height="auto" style="object-fit: contain;"></canvas>
     </div>
     <div class="nameContainer" [ngStyle]="{'display': (displayName==true) ?'flex' : 'none'}">
         <div class="nameBoxContainer">
