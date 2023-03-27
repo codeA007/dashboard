@@ -3,20 +3,24 @@
         <img src="{{imgUrl}}" alt="">
     </div>
 </div> -->
+<app-sidebar2></app-sidebar2>
 <div class="adminContainer">
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>
     <app-header name="Admin"></app-header>
+    <!-- <div class="adminSideBarContainer">
+    
+    </div> -->
     <div class="selectorContainer">
         <!-- <div class="selector">
             <p class="four">4 Wheeler</p>
             <p class="two">2 Wheeler</p>
         </div> -->
-        <a routerLink='/results' class="addShowroom"> View Results <fa-icon [icon]="faPoll"></fa-icon></a>
+        <!-- <a routerLink='/results' class="addShowroom"> View Results <fa-icon [icon]="faPoll"></fa-icon></a>
         <a routerLink='/addCamera' class="addShowroom">Add Camera <fa-icon [icon]="faCameraRetro"></fa-icon></a>
         <a routerLink='/viewCamera' class="addShowroom"> View Cameras <fa-icon [icon]="faList"></fa-icon></a>
-        <a routerLink='/account/addUser' class="addShowroom"> Add User <fa-icon [icon]="faList"></fa-icon></a>
+        <a routerLink='/account/addUser' class="addShowroom"> Add User <fa-icon [icon]="faList"></fa-icon></a> -->
         <!-- <button>Start ANPR</button> -->
     </div>
     <h3>Showroom name</h3>

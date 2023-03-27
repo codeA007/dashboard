@@ -93,3 +93,7 @@ img {
   cursor: pointer;
   object-fit: contain;
 }
+
+h3{
+  margin-left: 60px;
+}

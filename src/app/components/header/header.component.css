@@ -36,3 +36,25 @@ fa-icon {
   margin-right: 15px;
   cursor: pointer;
 }
+
+img{
+  width: 28px;
+  height: 28px;
+}
+
+.sideBarContainer{
+  display: flex;
+  align-items: center;
+}
+
+.logo{
+  display: flex;
+}
+
+.logo{
+  margin-left: 10px;
+}
+
+.logo h5{
+  margin-left: 10px;
+}

@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { faCameraRetro,faPoll,faList} from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   selector: 'app-adminpage',
   templateUrl: './adminpage.component.html',

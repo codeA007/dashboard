@@ -1,0 +1,51 @@
+.addShowroom {
+    padding: 7px 12px;
+    background-color: #03a9f4;
+    border-radius: 3px;
+    margin: 10px 2px;
+    cursor: pointer;
+    color: white;
+  }
+
+ a{
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    text-decoration: none;
+  }
+  .offcanvas-body{
+    display: flex;
+    flex-direction: column;
+  }
+
+  .btn{
+    color: white;
+    border: none;
+    font-size: 22px;
+    margin-top: 5px;
+  }
+
+  .logo{
+    display: flex;
+  }
+  
+  .logo{
+    margin-left: 10px;
+  }
+  
+  .logo h5{
+    margin-left: 10px;
+  }
+
+  img{
+    width: 28px;
+    height: 28px;
+  }
+  .side{
+    height: 100%;
+    background-color:#015aba;
+  }
+
+  .offcanvas .offcanvas-s{
+    width: 200px;
+  }

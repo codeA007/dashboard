@@ -31,6 +31,9 @@ import { ErrorComponent } from './components/error/error.component';
 import { ZoomComponent } from './components/zoom/zoom.component';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import { ToastComponent } from './components/toast/toast.component';
+import { DateFormaterPipe } from './pipes/date-formater.pipe';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { Sidebar2Component } from './components/sidebar2/sidebar2.component';
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 
@@ -54,6 +57,9 @@ import { ToastComponent } from './components/toast/toast.component';
     ErrorComponent,
     ZoomComponent,
     ToastComponent,
+    DateFormaterPipe,
+    SidebarComponent,
+    Sidebar2Component,
  
     // EditImageComponent
   ],

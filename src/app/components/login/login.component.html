@@ -8,6 +8,7 @@
     </form>
 </div> -->
 <app-toast message="{{message}}" color="{{color}}"></app-toast>
+<h3>{{datepipe|dateFormater}}</h3>
 <div class="loginContainer">
     <form class="loginform" [formGroup]="addTodo">
         <h4>Login user <fa-icon [icon]="faAddressCard"></fa-icon> </h4>

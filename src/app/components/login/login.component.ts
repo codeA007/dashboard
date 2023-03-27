@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit   {
  condition:any= false;
  message!:String;
  color!:String;
+  datepipe = new Date();
  faAddressCard = faAddressCard;
   constructor(private authService: AuthService,private router:Router) {
   }

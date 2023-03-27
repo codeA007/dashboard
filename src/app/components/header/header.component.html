@@ -1,5 +1,12 @@
 <div class="headerContainer">
-    <h3 routerLink='/'>{{name}}</h3>
+    <div class="sideBarContainer" *ngIf="show==true"><app-sidebar></app-sidebar>
+        <div class="logo">
+            <img src="../../../assets/logo.png" alt="">
+            <h5>{{"DocketRun" | uppercase}}</h5>
+        </div>
+    </div>
+    
+    <h3 routerLink='/'>Welcome {{name}}</h3>
     <!-- <div class="row">
         <div class="col">
             <div ngbDropdown class="d-inline-block">
