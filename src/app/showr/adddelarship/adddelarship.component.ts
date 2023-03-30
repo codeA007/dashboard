@@ -8,9 +8,9 @@ import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 })
 export class AdddelarshipComponent {
   addShowroom =new FormGroup({
-    delarShipName:new FormControl(''),
-    showroomName: new FormControl(''),
-    location:new FormControl(''),
+    dealershipName:new FormControl(''),
+    email:new FormControl(''),
+    password:new FormControl(''),
   });
 
   submitShowroomDetails(){

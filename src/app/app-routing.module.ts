@@ -15,20 +15,23 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { FabricjsComponent } from './components/fabricjs/fabricjs.component';
 import { AddCameraComponent } from './components/add-camera/add-camera.component';
 import {ViewCameraComponent} from './components/view-camera/view-camera.component';
+import { SearchComponent } from './components/search/search.component';
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'register',component:RegisterComponent},
   {path:'',component:HomepageComponent,canActivate:[AuthGuard]},
-  {path:'superAdmin',component:SuperadminComponent,canActivate:[AuthGuard]},
+  {path:'superAdmin',component:SuperadminComponent},
+  // {path:'superAdmin',component:SuperadminComponent,canActivate:[AuthGuard]},
   // {path:'superAdmin',component:SuperadminComponent,canActivate:[]},
   {path:'admin',component:AdminpageComponent, },
   // {path:'admin',component:AdminpageComponent,canActivate:[AdminGuard] },
-  {path:'results',component:ResultsComponent,canActivate:[AdminGuard]},
+  {path:'results',component:ResultsComponent},
   {path:'user',component:UserpageComponent ,},
-  {path:'showrooms',component:ShowroomsComponent,canActivate:[AuthGuard]},
+  {path:'showrooms',component:ShowroomsComponent,},
   {path:'analytics',component:AnalyticsComponent,},
+  {path:'search',component:SearchComponent,},
   {path:'editImage',component:FabricjsComponent,},
   {path:'addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
   {path:'viewCamera',component:ViewCameraComponent,canActivate:[AdminGuard] },

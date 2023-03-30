@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,private router: Router,private route:ActivatedRoute){ 
   }
   ngOnInit(): void {
-    if(this.router.url == '/admin'){
+    if(this.router.url == '/admin' || this.router.url == '/results' || this.router.url == '/search' || this.router.url=='/user'){
       this.show = true;
     }
     else{

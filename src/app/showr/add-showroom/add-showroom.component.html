@@ -2,12 +2,27 @@
     <!-- <app-header name="SuperAdmin"></app-header> -->
     <form class="addShowroomForm" [formGroup]="addShowroom">
         <h4>Add Showroom <fa-icon [icon]="faCar"></fa-icon></h4>
-        <input type="text" name="" placeholder="Delarship Name" id="" formControlName="delarShipName">
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{delarShipName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="delarship(this.name.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <input type="text" name="" placeholder="Delarship Name" id="" formControlName="delarShipName"> -->
         <input type="text" name="" placeholder="Add showroom name" id="" formControlName="showroomName">
         <input type="text" name="" placeholder="Add Location" id="" formControlName="location">
-        <p>Latitude :{{latitude}} Longitude :{{longitude}}</p>
+        <input type="text" name="" placeholder="Enter Email" id="" formControlName="email">
+        <input type="text" name="" placeholder="Enter Password" id="" formControlName="password">
+        <p>Latitude :{{latitude}} <br/>Longitude :{{longitude}}</p>
 
-        <button (click)="submitShowroomDetails()">Submit </button>
+        <button class="submit" (click)="submitShowroomDetails()">Submit </button>
     </form>
     <div class="btnContainer">
 

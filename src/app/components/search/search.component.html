@@ -1,0 +1,10 @@
+<app-header name="Admin"></app-header>
+<app-sidebar2></app-sidebar2>
+<h5>Please Select date...</h5>
+<div class="searchContainer">
+    <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
+    [timePickerIncrement]="15" [timePicker24Hour]="true" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
+    [(ngModel)]="selected" class="form-control" />
+    <button (click)="submit()">Search  <fa-icon [icon]="search"></fa-icon></button>
+</div>
+

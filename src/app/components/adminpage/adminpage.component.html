@@ -5,10 +5,10 @@
 </div> -->
 <app-sidebar2></app-sidebar2>
 <div class="adminContainer">
+    <app-header name="Admin"></app-header>
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>
-    <app-header name="Admin"></app-header>
     <!-- <div class="adminSideBarContainer">
     
     </div> -->
@@ -23,13 +23,27 @@
         <a routerLink='/account/addUser' class="addShowroom"> Add User <fa-icon [icon]="faList"></fa-icon></a> -->
         <!-- <button>Start ANPR</button> -->
     </div>
-    <h3>Showroom name</h3>
+    <div class="start">
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{showroomName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="showroom(this.name.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->
     <!-- <div class="dataContainer"> -->
     <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">vehicle Img </th>
+                <th scope="col">Vehicle Img </th>
                 <th scope="col">NoPlate Img </th>
                 <th scope="col">Vehicle No</th>
                 <th scope="col">Time</th>

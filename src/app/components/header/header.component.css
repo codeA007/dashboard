@@ -42,14 +42,14 @@ img{
   height: 28px;
 }
 
+.logo{
+  display: flex;
+}
 .sideBarContainer{
   display: flex;
   align-items: center;
 }
 
-.logo{
-  display: flex;
-}
 
 .logo{
   margin-left: 10px;

@@ -17,10 +17,21 @@ export class AddShowroomComponent implements OnInit {
   latitude?:Number;
   longitude?:Number;
 addShowroom =new FormGroup({
-  delarShipName:new FormControl(''),
+  // delarShipName:new FormControl(''),
   showroomName: new FormControl(''),
   location:new FormControl(''),
+  email: new FormControl(''),
+  password:new FormControl('')
 });
+delarShipName:String='delarShipName';
+names=[
+  {
+    name:'Nagsanthi'
+  },
+  {
+    name:'KIA'
+  }
+]
 
 ngOnInit(): void {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -30,13 +41,16 @@ ngOnInit(): void {
 
   })
 }
-
+delarship(name:any){
+  this.delarShipName = name;
+}
 submitShowroomDetails(){
-  let newData = {...this.addShowroom.value,latitiude:this.latitude,longitude:this.longitude};
+  let newData = {...this.addShowroom.value,latitiude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName};
  console.log(newData)
-console.log(this.authService.superAdmin);
+// console.log(this.authService.superAdmin);
 // this.authService.loginAccount(this.addShowroom.value).subscribe(data=>{
 //   console.log(data);
 // })
 }
+
 }

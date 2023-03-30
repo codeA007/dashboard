@@ -14,7 +14,7 @@ h4 {
   text-align: center;
   margin-top: 10px;
 }
-button {
+.submit {
   border-radius: 3px;
   border: none !important;
   width: 150px;
@@ -41,7 +41,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 450px;
-  height: 350px;
+  height: 450px;
   background: #f1f2f6;
   padding: 10px;
   border-radius: 3px;
@@ -54,7 +54,7 @@ button {
   border: none;
   padding: 10px 0;
 }
-button {
+.submit {
   border: none;
   background-color: #015aba;
   padding: 10px;

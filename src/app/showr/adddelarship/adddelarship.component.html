@@ -1,8 +1,10 @@
 <div class="addShowroomContainer">
     <!-- <app-header name="SuperAdmin"></app-header> -->
-    <h4>Add DelarShip</h4>
     <form class="addShowroomForm" [formGroup]="addShowroom">
-        <input type="text" name="" placeholder="Delarship Name" id="" formControlName="delarShipName">
+        <h4>Add Dealership</h4>
+        <input type="text" name="" placeholder="Dealership Name" id="" formControlName="dealershipName">
+        <input type="text" name="" placeholder="Enter email" id="" formControlName="email">
+        <input type="text" name="" placeholder="Enter Password" id="" formControlName="password">
         <button (click)="submitShowroomDetails()">Submit</button>
     </form>
     <div class="btnContainer">

@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // import { faBars} from '@fortawesome/free-solid-svg-icons';
 
+import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+
 import { faBars,faCameraRetro,faPoll,faList,faArrowRight} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-sidebar',
@@ -15,8 +17,17 @@ faCameraRetro = faCameraRetro;
 faPoll = faPoll;
 faList = faList;
 arrow = faArrowRight;
-	constructor(private offcanvasService: NgbOffcanvas) {
+show=false;
+	constructor(private offcanvasService: NgbOffcanvas,private router: Router,private route:ActivatedRoute) {
   }
+ngOnInit(): void {
+  if(this.router.url == '/user'){
+	this.show = false;
+  }
+  else{
+	this.show = true;
+  }
+}
 
 	open(content: any) {
 		this.offcanvasService.open(content, { ariaLabelledBy: 'offcanvas-basic-title' }).result.then(

@@ -97,3 +97,11 @@ img {
 h3{
   margin-left: 60px;
 }
+
+.start{
+  margin: 10px 65px;
+}
+
+button{
+  width: 300px;
+}

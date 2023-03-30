@@ -46,3 +46,15 @@ p {
 a {
   text-align: center;
 }
+
+img{
+  width: 28px;
+  height: 28px;
+}
+
+.logo{
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  margin: 10px 0;
+}

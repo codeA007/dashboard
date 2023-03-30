@@ -42,7 +42,8 @@ h3 {
 
 .optionsBtn {
   padding: 8px 12px;
-  background-color: #c8e4f5;
+  background-color: #015aba;
+  color: white;
   border-radius: 3px;
 }
 .options {

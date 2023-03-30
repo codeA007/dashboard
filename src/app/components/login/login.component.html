@@ -8,9 +8,13 @@
     </form>
 </div> -->
 <app-toast message="{{message}}" color="{{color}}"></app-toast>
-<h3>{{datepipe|dateFormater}}</h3>
+<!-- <h3>{{datepipe|dateFormater}}</h3> -->
 <div class="loginContainer">
     <form class="loginform" [formGroup]="addTodo">
+        <!-- <div class="logo">
+            <img src="../../../assets/logo.png" alt="">
+            <h5>{{"DocketRun" | uppercase}}</h5>
+        </div> -->
         <h4>Login user <fa-icon [icon]="faAddressCard"></fa-icon> </h4>
         <label for="">Username</label>
         <input type="text" placeholder="enter username" formControlName="username" [required]="condition">

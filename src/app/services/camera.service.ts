@@ -42,4 +42,18 @@ geoFencing(data:Object):Observable<any>{
     let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
     return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getCoordinates`,data,{headers:header})
   }
+
+  uploadFile(data:any):Observable<any>{
+    console.log(data,'....');
+    // const endpoint = 'your-destination-url';
+    // const formData: FormData = new FormData();
+    // formData.set('fileKey', data,);
+    // console.log(formData);
+    
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/uploadfile`,data)
+  }
+
+  // downloadFile(){
+  //   this.http.get
+  // }
 }

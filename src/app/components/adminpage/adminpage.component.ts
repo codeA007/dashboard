@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { faCameraRetro,faPoll,faList} from '@fortawesome/free-solid-svg-icons';
+import { faCameraRetro,faPoll,faList,faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-adminpage',
@@ -13,6 +13,15 @@ export class AdminpageComponent {
   faCameraRetro = faCameraRetro;
   faPoll = faPoll;
   faList = faList;
+  showroomName:String='Select ShowRoomName';
+  names=[
+    {
+      name:'Nagsanthi'
+    },
+    {
+      name:'KIA'
+    }
+  ]
   datas=[
     { imageUrl:'https://c8.alamy.com/comp/2J3TRG8/mumbai-india-april-08-2022-the-bharat-series-number-plates-introduced-by-the-india-ministry-of-road-transport-and-highways-to-make-the-mobility-of-2J3TRG8.jpg',
     numberPlate:'ka65 Q7080',
@@ -143,6 +152,9 @@ any:'Any'
     console.log(this.showImg);
     
    }
+   showroom(name:any){
+    this.showroomName = name;
+  }
 
    hideModle(e:any){
   

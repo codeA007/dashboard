@@ -1,5 +1,6 @@
+<app-header name="Admin"></app-header>
+<app-user-sidebar></app-user-sidebar>
 <div class="userContainer">
-    <app-header name="Admin"></app-header>
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ShowrRoutingModule } from './showr-routing.module';
 import { AddShowroomComponent } from './add-showroom/add-showroom.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import {HeaderComponent} from '../components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from '../components/header/header.component';
@@ -22,9 +23,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ShowrRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgbModule,
     // AppModule
     //  HeaderComponent
-  ]
+  ],
+  // bootstrap: [ShowrComponent]
 })
 export class ShowrModule { }

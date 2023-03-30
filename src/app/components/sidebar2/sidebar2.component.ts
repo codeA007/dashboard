@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { faBars,faCameraRetro,faPoll,faList} from '@fortawesome/free-solid-svg-icons';
+import { faBars,faCameraRetro,faPoll,faList,faSearch} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar2',
@@ -12,4 +12,5 @@ export class Sidebar2Component {
   faCameraRetro = faCameraRetro;
   faPoll = faPoll;
   faList = faList;
+  search = faSearch;
 }
