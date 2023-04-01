@@ -2,6 +2,7 @@
     <!-- <app-header name="SuperAdmin"></app-header> -->
     <form class="addShowroomForm" [formGroup]="addShowroom">
         <h4>Add Dealership</h4>
+        <h6 [ngStyle]="{color:'red'}">{{errorMessage}}</h6>
         <input type="text" name="" placeholder="Dealership Name" id="" formControlName="dealershipName">
         <input type="text" name="" placeholder="Enter email" id="" formControlName="email">
         <input type="text" name="" placeholder="Enter Password" id="" formControlName="password">

@@ -100,8 +100,20 @@ h3{
 
 .start{
   margin: 10px 65px;
+  display: flex;
+  justify-content: space-between;
 }
 
 button{
   width: 300px;
+}
+
+.startBtn{
+  width: 100px;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  padding: 6px 0;
+  background-color: #7acd21;
+  font-weight: bold;
 }

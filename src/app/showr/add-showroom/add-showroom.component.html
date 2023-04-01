@@ -9,8 +9,8 @@
                         {{delarShipName}}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button (click)="delarship(this.name.name)" ngbDropdownItem
-                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                        <button (click)="delarship(this.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name}}</button>
                     </div>
                 </div>
             </div>

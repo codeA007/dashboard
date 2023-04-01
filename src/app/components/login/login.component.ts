@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit   {
       this.authService.admin =true;
       this.router.navigate(['/admin']);
     }
-    else if(data.designation=='SuperAdmin'){
+    else if(data.designation=='Super Admin'){
       this.authService.admin =true;
       this.router.navigate(['/showrooms']);
     }

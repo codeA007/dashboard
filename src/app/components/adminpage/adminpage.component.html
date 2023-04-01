@@ -31,11 +31,14 @@
                         {{showroomName}}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button (click)="showroom(this.name.name)" ngbDropdownItem
-                            *ngFor="let name of this.names;index as i;">{{name.name}}</button>
+                        <button (click)="showroom(this.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name}}</button>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="">
+            <button class="startBtn" (click)="start()">START</button>
         </div>
     </div>
     <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->

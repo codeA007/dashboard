@@ -2,6 +2,8 @@ import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { faCar } from '@fortawesome/free-solid-svg-icons';
+import { ShowroomService } from '../../services/showroom.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-showroom',
@@ -10,7 +12,7 @@ import { faCar } from '@fortawesome/free-solid-svg-icons';
 })
 export class AddShowroomComponent implements OnInit {
 
-  constructor(private authService: AuthService) {}
+  constructor(private showroomService:ShowroomService ,private router:Router){}
   errorMessage ='';
   faCar = faCar;
   locationJs:any;
@@ -24,14 +26,7 @@ addShowroom =new FormGroup({
   password:new FormControl('')
 });
 delarShipName:String='delarShipName';
-names=[
-  {
-    name:'Nagsanthi'
-  },
-  {
-    name:'KIA'
-  }
-]
+names!:any[]
 
 ngOnInit(): void {
   navigator.geolocation.getCurrentPosition((position) => {
@@ -40,17 +35,31 @@ ngOnInit(): void {
     this.longitude =position.coords.longitude;
 
   })
+
+  this.showroomService.getDealerships().subscribe((data:any)=>{
+    this.names = data;
+    console.log(data);
+    // data.forEach((name:any) => { 
+    //   console.log(name);
+    //   this.names.push(name.DName)
+    // });
+    console.log(this.names);
+    
+  })
 }
 delarship(name:any){
   this.delarShipName = name;
 }
 submitShowroomDetails(){
-  let newData = {...this.addShowroom.value,latitiude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName};
- console.log(newData)
-// console.log(this.authService.superAdmin);
-// this.authService.loginAccount(this.addShowroom.value).subscribe(data=>{
-//   console.log(data);
-// })
+  // if(this.addShowroom.value.showroomName==''||this.addShowroom.value.email==''||this.addShowroom.value.)
+  let newData = {...this.addShowroom.value,latitude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName};
+console.log(newData);
+this.showroomService.addShowroom(newData).subscribe(data=>{
+  console.log(data);
+  if(data){
+    this.router.navigate(['/showrooms']);
+  }
+})
 }
 
 }

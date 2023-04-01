@@ -33,7 +33,7 @@ ngOnInit(): void {
 }
 
 createAccount() {
-  // console.log(this.registerForm.value);
+  console.log(this.registerForm.value);
   this.authService.createAccount(this.registerForm.value).subscribe(data=>{
     console.log(data);
   });
