@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup,FormControl,FormControlName,Validators } from '@angular/forms';
 import{CameraService} from '../../services/camera.service';
@@ -9,8 +9,14 @@ import{CameraService} from '../../services/camera.service';
   templateUrl: './add-camera.component.html',
   styleUrls: ['./add-camera.component.css']
 })
-export class AddCameraComponent {
+export class AddCameraComponent implements OnInit {
   constructor(private cameraService: CameraService,private router:Router) {}
+  names=[]
+  ngOnInit(): void {
+    this.cameraService.getBrandNames().subscribe(data=>{
+     this.names = data
+    })
+  }
   disableBtn:any = false;
   brandName='Brand Name';
   errorMessage = '';
@@ -31,18 +37,7 @@ export class AddCameraComponent {
 // UNV_camera
 // UNV_NVR
 // Swann
-  names=[
-    {
-      name:'Axis'
-    },
-    {
-      name:'SCW_line'
-    },
-    
-    {
-      name:'SCW_networker'
-    },
-  ]
+  
 addCamera = new FormGroup(
 {  
   ipaddress: new FormControl(''),

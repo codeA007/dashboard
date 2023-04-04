@@ -53,6 +53,10 @@ geoFencing(data:Object):Observable<any>{
     return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/uploadfile`,data)
   }
 
+  getBrandNames(){
+    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getBrand`)
+  }
+
   // downloadFile(){
   //   this.http.get
   // }

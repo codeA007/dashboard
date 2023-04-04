@@ -11,5 +11,6 @@
             <option *ngFor="let item of data" [value]="item.name">{{item.name}}</option>
         </select>
         <button type="button" (click)="createAccount()">Sign Up</button>
+        <a routerLink='/login'>login</a>
     </form>
 </div>

@@ -60,8 +60,8 @@
     currentPage:page,
     totalItems:totalRecords }">
 
-        <img (click)="bigImage(image)" src=" {{image.imageUrl}}" alt="">
-        <img (click)="bigImage(image)" src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg"
+        <img (click)="bigImage(image)" [src]="ip+image.imageUrl" alt="">
+        <img (click)="bigImage(image)" src={{image.imageUrl}}
             alt="">
         <p class="numberPlate">{{this.image.numberPlate |uppercase }}</p>
         <p class="timestamp">{{this.image.timeStamp}}</p>

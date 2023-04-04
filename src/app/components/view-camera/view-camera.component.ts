@@ -4,6 +4,7 @@ import{CameraService} from '../../services/camera.service';
 import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 // import { Router } from '@angular/router';
+import * as Options from '../../../assets/config.json';
 
 @Component({
   selector: 'app-view-camera',
@@ -22,7 +23,7 @@ export class ViewCameraComponent implements OnInit {
   displayStatus= false;
   id:any;
   show?:boolean;
-  datas?:Array<any>;
+  datas:any[]=[];
   timer?:any;
   errorMessage = 'error';
   errorDisplayStatus = false;
@@ -31,6 +32,7 @@ export class ViewCameraComponent implements OnInit {
     ipaddress:new FormControl(''),
     department:new FormControl(''),
   });
+  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   ngOnInit(){
     console.log(`Bearer ${localStorage.getItem('token')}`);
     
@@ -62,7 +64,8 @@ export class ViewCameraComponent implements OnInit {
     // },6000)
 
   }
-
+  totalRecords:any = this.datas.length;
+  page=1
   ngOnDestroy() {
     clearInterval(this.timer);
   }

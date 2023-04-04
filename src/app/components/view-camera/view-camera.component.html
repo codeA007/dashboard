@@ -2,26 +2,30 @@
     <app-loading [show]=show></app-loading>
 </div>
 <ng-template #elseBlock>
+    <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
+        <div class="modalBoxContainer">
+            <h4>Edit Camera Details</h4>
+            <form action="" [formGroup]="editCameraForm">
+                <label>Camera Name</label>
+                <input type="text" formControlName="cameraname" placeholder="Enter Camera Name"
+                    [(ngModel)]="cameraname">
+                <label>ipAddress</label>
+                <input type="text" placeholder="Enter IPName" formControlName="ipaddress" [(ngModel)]="ipaddress">
+                <label>Department</label>
+                <input type="text" placeholder="Enter Location" formControlName="department"
+                    [(ngModel)]="department">
+                <button (click)="editDone()">Edit</button>
+            </form>
+        </div>
+    </div>
+    <app-header name="Admin"></app-header>
+    <app-sidebar2></app-sidebar2>
     <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
+    
     <div class="viewCameraContainer">
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
-        <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
-            <div class="modalBoxContainer">
-                <h4>Edit Camera Details</h4>
-                <form action="" [formGroup]="editCameraForm">
-                    <label>Camera Name</label>
-                    <input type="text" formControlName="cameraname" placeholder="Enter Camera Name"
-                        [(ngModel)]="cameraname">
-                    <label>ipAddress</label>
-                    <input type="text" placeholder="Enter IPName" formControlName="ipaddress" [(ngModel)]="ipaddress">
-                    <label>Department</label>
-                    <input type="text" placeholder="Enter Location" formControlName="department"
-                        [(ngModel)]="department">
-                    <button (click)="editDone()">Edit</button>
-                </form>
-            </div>
-        </div>
-        <app-header name="Admin"></app-header>
+        
+       
         <!-- <p *ngIf="check==true && check !=undefined ; else elseBlock">Camera is working</p> -->
         <ng-template #elseBlock>dkfdsfd</ng-template>
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
@@ -51,11 +55,14 @@
             </tr>
         </tbody> -->
         </table>
-        <div class="dataContainer" *ngFor="let data of datas; index as i">
+        <div class="dataContainer"  *ngFor="let data of datas | paginate :{
+            itemsPerPage:5,
+            currentPage:page,
+            totalItems:totalRecords }">
             <p>{{data.cameraname}}</p>
             <p>{{ data.ipaddress }}</p>
             <p>{{data.department}}</p>
-            <img src="http://192.168.1.47:5000{{data.img}}" alt="">
+            <img [src]="ip+'/getImage/'+data.img" alt="">
             <button class="geoFencing" (click)="geoFencing(data)">Geo
                 Fencing</button>
             <p>{{data.cam_status}}</p>
@@ -64,5 +71,6 @@
             <fa-icon class="delete" (click)="deleteCamera(data)" [icon]="faTrash"></fa-icon>
         </div>
         <p class="error" [ngStyle]="{background:color}">{{check}}</p>
+        <pagination-controls class="pageControls" (pageChange)="page= $event"></pagination-controls>
     </div>
 </ng-template>

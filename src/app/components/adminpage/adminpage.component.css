@@ -117,3 +117,8 @@ button{
   background-color: #7acd21;
   font-weight: bold;
 }
+/* p {
+  flex-basis: 100px;
+  flex-shrink: 0;
+  flex-grow: 0;
+} */

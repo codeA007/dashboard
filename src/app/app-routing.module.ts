@@ -34,6 +34,7 @@ const routes: Routes = [
   {path:'search',component:SearchComponent,},
   {path:'editImage',component:FabricjsComponent,},
   {path:'addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
+  // {path:'addCamera',component:AddCameraComponent},
   {path:'viewCamera',component:ViewCameraComponent,canActivate:[AdminGuard] },
   {path:'showroom',
   loadChildren:()=>import('./showr/showr.module').then(mod=>mod.ShowrModule),

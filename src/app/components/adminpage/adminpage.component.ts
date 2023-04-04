@@ -2,7 +2,9 @@ import { Component,OnInit } from '@angular/core';
 import { faCameraRetro,faPoll,faList,faSearch} from '@fortawesome/free-solid-svg-icons';
 import { ShowroomService } from '../../services/showroom.service';
 import {DataService} from '../../data.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import * as Options from '../../../assets/config.json';
 
 @Component({
   selector: 'app-adminpage',
@@ -10,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit {
-  constructor(private showroomService:ShowroomService,private dataService: DataService){}
+  constructor(private showroomService:ShowroomService,private dataService: DataService,private sanatizer:DomSanitizer){}
   names=[]
   ngOnInit(): void {
     this.showroomService.getShowroomsList().subscribe((data)=>{
@@ -26,8 +28,10 @@ export class AdminpageComponent implements OnInit {
   faList = faList;
   id!: NodeJS.Timer;
   showroomName:String='Select ShowRoomName';
+  ip=`http://${(Options as any).default.ip}/${(Options as any).default.port}`;
   datas=[
-    { imageUrl:'https://c8.alamy.com/comp/2J3TRG8/mumbai-india-april-08-2022-the-bharat-series-number-plates-introduced-by-the-india-ministry-of-road-transport-and-highways-to-make-the-mobility-of-2J3TRG8.jpg',
+    { imageUrl:'/cam1.jpg',
+    // { imageUrl:'http://192.168.1.101:5000/getImage/cam1.jpg',
     numberPlate:'ka65 Q7080',
     timeStamp:'12:39PM',
     any:'Any'

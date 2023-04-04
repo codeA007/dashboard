@@ -25,7 +25,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
    createAccount(data: any):Observable<any> {
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/create_account`,data)
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/createAccount`,data)
   }
 
   loginAccount(data:any):Observable<any> {
