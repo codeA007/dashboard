@@ -3,10 +3,24 @@
     <app-sidebar2></app-sidebar2>
     <!-- <mat-toolbar>Single datepicker with custom invalid date & custom class on date</mat-toolbar> -->
     <div class="results">
-        <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class="">
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block drop">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        {{showroomName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button (click)="showroom(this.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class="fileSelector">
         <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
             [timePickerIncrement]="15" [timePicker24Hour]="false" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
             [(ngModel)]="selected" class="form-control" />
         <button class="submit" (click)="submit()">submit</button>
+        <button  class="download" (click)="downloadFile()">downloadFile <fa-icon [icon]="fileIcon"></fa-icon></button>
     </div>
 </div>

@@ -1,10 +1,12 @@
 .results {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  padding: 10px 0;
+    margin: 10px 65px;
   padding: 10px 0;
 }
 .form-control {
-  width: 450px;
+  width: 300px;
 }
 .submit {
   border: none;
@@ -57,4 +59,17 @@
 }
 .custom-day.faded {
   background-color: rgba(2, 117, 216, 0.5);
+}
+
+.download{
+  border: none;
+  border-radius: 3px;
+  background-color: rgb(2, 117, 216);
+  color: white;
+}
+
+.fileSelector{
+  width: 170px;
+  padding: 0;
+  margin: 0;
 }

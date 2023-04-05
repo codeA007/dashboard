@@ -36,6 +36,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { Sidebar2Component } from './components/sidebar2/sidebar2.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.component';
+import FileSaver from 'file-saver'
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 

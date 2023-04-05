@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient,HttpHeaders } from '@angular/common/http';
+import {HttpClient,HttpHeaders,HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import * as Options from '../../assets/config.json';
 
@@ -50,14 +50,20 @@ geoFencing(data:Object):Observable<any>{
     // formData.set('fileKey', data,);
     // console.log(formData);
     
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/uploadfile`,data)
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/uploadFile`,data)
   }
 
   getBrandNames(){
     return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getBrand`)
   }
 
-  // downloadFile(){
-  //   this.http.get
-  // }
+  downloadFile(data:any){
+    let header = new HttpHeaders().set("Content-Type", 'application/json');
+    header.set('observe','response')
+    var options={
+      observe:'response',
+      responseType:'arraybuffer'
+    }
+    return this.http.post(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/download`,data,{observe:'response',responseType:'arraybuffer'})
+  }
 }
