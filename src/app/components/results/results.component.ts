@@ -1,35 +1,47 @@
-import { Component } from '@angular/core';
+import { Component,OnInit} from '@angular/core';
 import { NgbDate, NgbCalendar, NgbDateParserFormatter, NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { NgxDaterangepickerMd} from 'ngx-daterangepicker-material';
 import { JsonPipe } from '@angular/common';
 import { faFile} from '@fortawesome/free-solid-svg-icons';
 import{CameraService} from '../../services/camera.service';
+import { ShowroomService } from '../../services/showroom.service';
 import dayjs from 'dayjs/esm';
 // import { saveAs } from 'file-saver';
 import {saveAs} from 'file-saver';
+// import { CameraService } from '../../services/camera.service';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent {
+export class ResultsComponent implements OnInit {
   file!:any;
   showroomName: any='select showroom';
   names=[]
   fileIcon=faFile
+  color='';
+  check: any;
+
+ 
   
 fileUpload(event:any){
   this.file =event.target.files[0]; 
   console.log(event.target.files);
 }
 selected: { startDate: dayjs.Dayjs; endDate: dayjs.Dayjs };
-  constructor(private cameraService:CameraService) {
+  constructor(private cameraService:CameraService, private showRoomService:ShowroomService) {
     this.selected = {
       startDate: dayjs('2023-01-01T00:00Z'),
       endDate: dayjs('2023-02-20T00:00Z')
     };
+  }
+  ngOnInit(): void {
+    this.showRoomService.getShowroomsList().subscribe((data)=>{
+      this.names = data.showrooms;
+      console.log(data);
+    }) 
   }
 submit(){
   let data = {
@@ -39,9 +51,19 @@ submit(){
   const formData: FormData = new FormData();
   formData.append('file',this.file);
   formData.append('company','KIA');
+  formData.append('date','2023-04-08');
   console.log(formData);
   
   this.cameraService.uploadFile(formData).subscribe(data=>{
+    console.log(formData);
+    if(data){
+       this.color = 'green';
+    this.check = data.message;
+    setTimeout(()=>{
+      this.color = '';
+      this.check = ''
+    },1000)
+    }
     console.log(data);
   })
   console.log(this.file); 
@@ -56,7 +78,7 @@ downloadFile(){
   let date =MyDate.getFullYear() + '-'+ ('0' + (MyDate.getMonth()+1)).slice(-2) + '-'+('0' + MyDate.getDate()).slice(-2)
   let data={
     company:'KIA',
-    date:'2023-04-04'
+    date:'2023-04-08'
   }
  
 var MyDateString;

@@ -73,3 +73,18 @@
   padding: 0;
   margin: 0;
 }
+
+.error {
+  text-align: center;
+  background: green;
+  position: absolute;
+  width: 100%;
+  color: white;
+  top: 0;
+  /* bottom: 0; */
+  margin: 0;
+  z-index: 500;
+}
+.error p {
+  padding: 10px;
+}

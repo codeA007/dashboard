@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit   {
           this.router.navigate(['/admin']);
         }
         else if(data.designation=='SuperAdmin'){
-          this.authService.admin =true;
+          this.authService.superAdmin =true;
           this.router.navigate(['/showrooms']);
         }
       },(err)=>{
@@ -75,8 +75,8 @@ export class LoginComponent implements OnInit   {
       this.authService.admin =true;
       this.router.navigate(['/admin']);
     }
-    else if(data.designation=='Super Admin'){
-      this.authService.admin =true;
+    else if(data.designation=='SuperAdmin'){
+      this.authService.superAdmin =true;
       this.router.navigate(['/showrooms']);
     }
     // if(data.result == 'Login successful!'){

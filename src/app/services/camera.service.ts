@@ -54,7 +54,8 @@ geoFencing(data:Object):Observable<any>{
   }
 
   getBrandNames(){
-    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getBrand`)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getBrand`,{headers:header})
   }
 
   downloadFile(data:any){
@@ -65,5 +66,8 @@ geoFencing(data:Object):Observable<any>{
       responseType:'arraybuffer'
     }
     return this.http.post(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/download`,data,{observe:'response',responseType:'arraybuffer'})
+  }
+  anprData(){
+    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getallanpr`);
   }
 }

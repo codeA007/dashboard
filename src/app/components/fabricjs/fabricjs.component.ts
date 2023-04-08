@@ -7,6 +7,7 @@ import 'fabric-history';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 import {DataService} from '../../data.service';
 import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
+import * as Options from '../../../assets/config.json';
 
 declare const fabricH: any;
 
@@ -42,6 +43,8 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
    multi3:any
   d:any;
   o:any;
+  imgName!:String;
+  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}/getImage/`;
   displayName =false;
   @ViewChild('canRef') canvasRef!:ElementRef;
   // document: any;
@@ -56,6 +59,9 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
 
     this.show=true;
     this.cameraService.getCoordinates(this.id).subscribe(data => {
+      console.log(data.img);
+      this.imgName = data.img;
+      this.selectFile();
       console.log(data.coordinates,"coooo");
       this.errorMessage ='';
       this.errorDisplayStatus = false;
@@ -365,8 +371,9 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
     //   this.polygon.points = [];
     // }
     console.log(this.isCanvasDrawn,this.isPolygonDrawn,this.isImageDrawn,"init 2");
-
-    this.selectFile();
+// if(this.imgName != undefined){
+  // this.selectFile();
+// }
     this.canvas.on('mouse:up', (options: { button: number; e: any; }) => {
       if (options.button === 1) {
         this.o = options.e;
@@ -526,7 +533,7 @@ export class FabricjsComponent  implements  AfterViewInit,OnInit {
         // this.url ='https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg';
         // this.canvas.setHeight(500);
         // this.canvas.setWidth(1280);
-        fabric.Image.fromURL('https://learn.corel.com/wp-content/uploads/2022/01/thunderstorm-3440450_1280.jpg', (img:any)=> {
+        fabric.Image.fromURL(this.ip+this.imgName, (img:any)=> {
           this.canvas.setHeight(img.height);
           this.canvas.setWidth(img.width);
           canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas), {

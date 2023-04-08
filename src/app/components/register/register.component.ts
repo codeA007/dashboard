@@ -36,6 +36,9 @@ createAccount() {
   console.log(this.registerForm.value);
   this.authService.createAccount(this.registerForm.value).subscribe(data=>{
     console.log(data);
+    if(data){
+      
+    }
   });
   // this.authService.superAdmin=true;
   // this.router.navigate(['/']);

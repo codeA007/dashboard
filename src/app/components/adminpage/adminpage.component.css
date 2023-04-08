@@ -117,8 +117,18 @@ button{
   background-color: #7acd21;
   font-weight: bold;
 }
-/* p {
+th{
+  width: 120px;
+}
+
+.headingContainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+p {
   flex-basis: 100px;
   flex-shrink: 0;
   flex-grow: 0;
-} */
+  text-align: center;
+}

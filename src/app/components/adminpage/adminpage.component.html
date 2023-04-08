@@ -38,34 +38,36 @@
             </div>
         </div>
         <div class="">
-            <button class="startBtn" (click)="start()">START</button>
+            <button class="startBtn" (click)="start()"
+            [ngStyle]="{'background-color': (startANPR==true) ? '#7acd21' : 'red'}"
+            >{{btnName}}</button>
         </div>
     </div>
     <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->
     <!-- <div class="dataContainer"> -->
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Vehicle Img </th>
-                <th scope="col">NoPlate Img </th>
-                <th scope="col">Vehicle No</th>
-                <th scope="col">Time</th>
-                <th scope="col">Any</th>
-            </tr>
-        </thead>
-    </table>
+    <div class="headingContainer">
+                <p scope="col">Vehicle Img </p>
+                <p scope="col">NoPlate Img </p>
+                <p scope="col">Vehicle No</p>
+                <p scope="col">Date</p>
+                <p scope="col">Entry Time</p>
+                <p scope="col">Exit Time</p>
+    </div>
 
     <div class="dataContainer" *ngFor="let image of datas | paginate :{
     itemsPerPage:4,
     currentPage:page,
     totalItems:totalRecords }">
 
-        <img (click)="bigImage(image)" [src]="ip+image.imageUrl" alt="">
-        <img (click)="bigImage(image)" src={{image.imageUrl}}
+        <img (click)="bigImage(image)" [src]="ip+'/getNumberplate/'+image.NP_img_path" alt="">
+        <img (click)="vImage(image)" [src]="ip+'/getVehicle/'+image.vehicle_img_path"
             alt="">
-        <p class="numberPlate">{{this.image.numberPlate |uppercase }}</p>
-        <p class="timestamp">{{this.image.timeStamp}}</p>
-        <p class="timestamp">Any</p>
+        <p class="numberPlate">{{image.lp}}</p>
+        <p class="numberPlate">{{image.date}}</p>
+        <p class="numberPlate">{{image.entry_time}}</p>
+        <p class="numberPlate">{{image.exit_time}}</p>
+        <!-- <p class="timestamp">{{this.image.timeStamp}}</p> -->
+        <!-- <p class="timestamp">Any</p> -->
         <!-- </div> -->
     </div>
 
