@@ -33,4 +33,8 @@ export class ShowroomService {
     let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
     return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/start`,data,{headers:header})
   }
+  getSuperAdminShowrooms(data:any):Observable<any>{
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getShowrooms`,data,{headers:header})
+  }
 }

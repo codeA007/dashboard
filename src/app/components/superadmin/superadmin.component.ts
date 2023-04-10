@@ -4,6 +4,8 @@ import {DataService} from '../../data.service';
 import { faArrowAltCircleRight,faArrowAltCircleLeft} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 import * as Options from '../../../assets/config.json';
+import { ShowroomService } from '../../services/showroom.service';
+import { CameraService } from '../../services/camera.service';
 @Component({
   selector: 'app-superadmin',
   templateUrl: './superadmin.component.html',
@@ -12,6 +14,10 @@ import * as Options from '../../../assets/config.json';
 export class SuperadminComponent implements OnInit {
   name:any;
   id:any;
+  page = 1;
+  imgUrl = ''
+  showImg ='false';
+  npImg='';
   editBtn:boolean=true;
   show:boolean=false;
   index?:any;
@@ -19,11 +25,19 @@ export class SuperadminComponent implements OnInit {
   faArrowLeft = faArrowAltCircleLeft;
   displayNextBtn = true;
   displayPreBtn = true;
+  idT!: NodeJS.Timer;
+  btnName='START';
+  showroomName!:any;
+  startANPR=true;
+  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   editNo =  new FormGroup({
     number:new FormControl('')
   })
-  constructor(private router: Router,private route:ActivatedRoute,private dataService:DataService) {
-    this.route.queryParams.subscribe(params => {
+  constructor(private router: Router,private route:ActivatedRoute,private dataService:DataService,private showroomService:ShowroomService,private cameraService:CameraService) {
+    this.route.queryParams.subscribe((params:any) => {
+      this.showroomName = params.showRoomName
+      console.log(this.showroomName);
+      
       console.log(params);
     })
   }
@@ -35,30 +49,35 @@ export class SuperadminComponent implements OnInit {
   }
   displayStatus:boolean = false;
   numberPlate:string ='';
-   datas=[
-   {id:'1',
-     imageUrl:'https://gomechanic.in/blog/wp-content/uploads/2019/05/indiapl8.jpg',
-    numberPlate:'KA65 Q7080',
-    timeStamp:'12:39PM',
-    any:'Any'
-  },
-{ id:'2',
-  imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-  numberPlate:'KA65 Q7081',
-  timeStamp:'12:39PM',
-  any:'Any'
-},
-{ id:'3',
-  imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-numberPlate:'KA65 Q7082',
-timeStamp:'12:39PM',
-any:'Any'
-},];
+  datas:any[]=[];
+//    datas=[
+//    {id:'1',
+//      imageUrl:'https://gomechanic.in/blog/wp-content/uploads/2019/05/indiapl8.jpg',
+//     numberPlate:'KA65 Q7080',
+//     timeStamp:'12:39PM',
+//     any:'Any'
+//   },
+// { id:'2',
+//   imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+//   numberPlate:'KA65 Q7081',
+//   timeStamp:'12:39PM',
+//   any:'Any'
+// },
+// { id:'3',
+//   imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+// numberPlate:'KA65 Q7082',
+// timeStamp:'12:39PM',
+// any:'Any'
+// },];
+totalRecords:any = this.datas.length;
 edit(image: any){
   console.log(image);
   this.displayStatus = true;
-  this.numberPlate = image.numberPlate;
-  this.id = image.id;
+  this.numberPlate = image.lp;
+  console.log(image.lp);
+  this.npImg =image.NP_img_path;
+  
+  this.id = image._id;
   this.datas.forEach((data,index)=>{
     if(data.id == this.id){
       this.index = index;
@@ -84,6 +103,49 @@ edit(image: any){
     }
   })
 }
+start(){
+  // console.log(this.showroomName);
+  let start = {
+    showroomName:'KIA',
+    startANPR:this.startANPR
+  }
+  this.btnName = 'STOP';
+  this.showroomService.startANPR(start).subscribe((data)=>{
+    console.log(data);
+    if(this.startANPR == false){
+      this.btnName = 'START'
+      this.ngOnDestroy();
+      this.startANPR = true;
+      return
+    }
+    if(data.result == 'STARTED'){
+      this.startANPR = false;
+      this.idT =setInterval(()=>{
+        this.cameraService.anprData().subscribe(data => {
+          console.log(data);
+          if(data){
+            this.datas = data;
+            // this.startANPR = false;
+          }
+        //  this.datas.unshift(
+        //    { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+        //      numberPlate:data.id,
+        //      timeStamp:'12:39PM',
+        //      any:'Any'
+        //    }
+        //  );
+       //  this.datas = [
+       //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+       //   numberPlate:data.todo,
+       //   timeStamp:'12:39PM',
+       //   id:'Any'
+       // }
+       //  ];
+       })
+     },2000)
+    }
+  })
+}
 done(){
   // setTimeout(()=>{
     this.displayStatus = false;
@@ -95,6 +157,29 @@ done(){
       }
     })
   // },2000)
+}
+
+hideModle(e:any){
+  
+  if(e.target.className=='modalBoxContainer'||e.target.className=='modalContainer'){
+    this.showImg ='false';
+}
+}
+bigImage(image:any){
+  console.log(image);
+  this.showImg ='true'
+  this.imgUrl = this.ip+'/getNumberplate/'+image.NP_img_path;
+  console.log(this.showImg);
+ }
+
+ vImage(image:any){
+  console.log(image);
+  this.showImg ='true'
+  this.imgUrl = this.ip+'/getVehicle/'+image.vehicle_img_path;
+  console.log(this.showImg);
+ }
+ngOnDestroy() {
+  clearInterval(this.idT);
 }
 next(){
   let len = this.datas.length;
