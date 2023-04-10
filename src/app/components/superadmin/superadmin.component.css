@@ -186,6 +186,11 @@ tr {
   height: 600px;
   object-fit: contain;
 } */
+.header{
+  display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
 .pageControls {
   position: fixed;
   left: 0px;

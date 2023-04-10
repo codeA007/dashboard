@@ -29,11 +29,11 @@
         <!-- <div class="selector">
             <p routeLink="/" class="four">Add Showroom</p>
         </div> -->
-        <div class="">
+        <div class="header">
+            <h5>{{showroomName}}</h5>
             <button class="startBtn" (click)="start()"
             [ngStyle]="{'background-color': (startANPR==true) ? '#7acd21' : 'red'}"
             >{{btnName}}</button>
-            <h5>{{showroomName}}</h5>
         </div>
         <div class="headingContainer">
             <p scope="col">Vehicle Img </p>

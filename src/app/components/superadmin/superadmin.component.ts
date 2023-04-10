@@ -74,7 +74,7 @@ edit(image: any){
   console.log(image);
   this.displayStatus = true;
   this.numberPlate = image.lp;
-  console.log(image.lp);
+  console.log(image._id);
   this.npImg =image.NP_img_path;
   
   this.id = image._id;
@@ -149,13 +149,23 @@ start(){
 done(){
   // setTimeout(()=>{
     this.displayStatus = false;
-    console.log(this.editNo.value);
-    let no = this.editNo.value.number
-    this.datas.forEach((data,index)=>{
-      if(data.id == this.id){
-        data.numberPlate = this.editNo.value.number ||''
-      }
+    let data = {
+      id:this.id,
+      np:this.editNo.value.number
+    }
+    console.log(this.editNo.value.number);
+    
+    this.showroomService.editNumperPlate(data).subscribe(data=>{
+      console.log(data);
+      this.datas = data
     })
+    // console.log(this.editNo.value);
+    // let no = this.editNo.value.number
+    // this.datas.forEach((data,index)=>{
+    //   if(data.id == this.id){
+    //     data.numberPlate = this.editNo.value.number ||''
+    //   }
+    // })
   // },2000)
 }
 
