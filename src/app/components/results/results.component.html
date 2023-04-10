@@ -1,7 +1,10 @@
 <div class="resultsContainer">
     <p class="error" [ngStyle]="{background:color}">{{check}}</p>
-    <app-header name="Admin"></app-header>
-    <app-sidebar2></app-sidebar2>
+    <app-header name={{name}}></app-header>
+    <div *ngIf="showSideBar==true">
+        <app-sidebar2></app-sidebar2>
+    </div>
+    
     <!-- <mat-toolbar>Single datepicker with custom invalid date & custom class on date</mat-toolbar> -->
     <div class="results">
         <div class="row">

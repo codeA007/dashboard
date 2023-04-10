@@ -2,6 +2,9 @@ import { Component,OnInit,OnDestroy } from '@angular/core';
 import { interval } from 'rxjs';
 import {DataService} from '../../data.service';
 import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
+import { CameraService } from '../../services/camera.service';
+import { ShowroomService } from '../../services/showroom.service';
+import * as Options from '../../../assets/config.json';
 
 @Component({
   selector: 'app-userpage',
@@ -12,10 +15,13 @@ export class UserpageComponent implements OnInit {
   id!: NodeJS.Timer;
   datas:Array<any>=[];
   page = 1;
+  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   totalRecords:any = this.datas.length;
   showImg?: string;
   imgUrl: any;
-  constructor(private dataService: DataService){}
+  btnName='START';
+  startANPR=true;
+  constructor(private dataService: DataService,private showroomService:ShowroomService,private cameraService:CameraService){}
 
   ngOnInit() {
     // setTimeout(()=>{
@@ -29,26 +35,39 @@ export class UserpageComponent implements OnInit {
     //     console.log(data);
     //   })
     // })
-    this.id =setInterval(()=>{
-       this.dataService.showUserData().subscribe(data => {
-        this.datas.unshift(
-          { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-            numberPlate:data.id,
-            timeStamp:'12:39PM',
-            id:'Any'
-          }
-        );
-      //  this.datas = [
-      //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
-      //   numberPlate:data.todo,
-      //   timeStamp:'12:39PM',
-      //   id:'Any'
-      // }
-      //  ];
-      })
-    },2000)
+    // this.id =setInterval(()=>{
+    //    this.dataService.showUserData().subscribe(data => {
+    //     this.datas.unshift(
+    //       { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+    //         numberPlate:data.id,
+    //         timeStamp:'12:39PM',
+    //         id:'Any'
+    //       }
+    //     );
+    //   //  this.datas = [
+    //   //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+    //   //   numberPlate:data.todo,
+    //   //   timeStamp:'12:39PM',
+    //   //   id:'Any'
+    //   // }
+    //   //  ];
+    //   })
+    // },2000)
   
   }
+  bigImage(image:any){
+    console.log(image);
+    this.showImg ='true'
+    this.imgUrl = this.ip+'/getNumberplate/'+image.NP_img_path;
+    console.log(this.showImg);
+   }
+
+   vImage(image:any){
+    console.log(image);
+    this.showImg ='true'
+    this.imgUrl = this.ip+'/getVehicle/'+image.vehicle_img_path;
+    console.log(this.showImg);
+   }
 
   ngOnDestroy() {
     clearInterval(this.id);
@@ -57,17 +76,61 @@ export class UserpageComponent implements OnInit {
     this.ngOnDestroy();
   }
 
-  start() {
-    this.ngOnInit();
+  // start() {
+  //   this.ngOnInit();
+  // }
+
+  start(){
+    // console.log(this.showroomName);
+    let start = {
+      showroomName:'KIA',
+      startANPR:this.startANPR
+    }
+    this.btnName = 'STOP';
+    this.showroomService.startANPR(start).subscribe((data)=>{
+      console.log(data);
+      if(this.startANPR == false){
+        this.btnName = 'START'
+        this.ngOnDestroy();
+        this.startANPR = true;
+        return
+      }
+      if(data.result == 'STARTED'){
+        this.startANPR = false;
+        this.id =setInterval(()=>{
+          this.cameraService.anprData().subscribe(data => {
+            console.log(data);
+            if(data){
+              this.datas = data;
+              // this.startANPR = false;
+            }
+          //  this.datas.unshift(
+          //    { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+          //      numberPlate:data.id,
+          //      timeStamp:'12:39PM',
+          //      any:'Any'
+          //    }
+          //  );
+         //  this.datas = [
+         //   { imageUrl:'https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg',
+         //   numberPlate:data.todo,
+         //   timeStamp:'12:39PM',
+         //   id:'Any'
+         // }
+         //  ];
+         })
+       },2000)
+      }
+    })
   }
 
-  bigImage(image:any){
-    console.log(image);
-    this.showImg ='true'
-    this.imgUrl = image.imageUrl
-    console.log(this.showImg);
+  // bigImage(image:any){
+  //   console.log(image);
+  //   this.showImg ='true'
+  //   this.imgUrl = image.imageUrl
+  //   console.log(this.showImg);
     
-   }
+  //  }
    hideModle(e:any){
   
     if(e.target.className=='modalBoxContainer'||e.target.className=='modalContainer'){

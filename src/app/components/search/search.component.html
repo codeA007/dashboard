@@ -1,5 +1,7 @@
-<app-header name="Admin"></app-header>
+<app-header name={{name}}></app-header>
+<div *ngIf="showSideBar==true">
 <app-sidebar2></app-sidebar2>
+</div>
 <h5>Please Select date...</h5>
 <div class="searchContainer">
     <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"

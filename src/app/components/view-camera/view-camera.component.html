@@ -18,11 +18,13 @@
             </form>
         </div>
     </div>
-    <app-header name="Admin"></app-header>
+    <app-header name={{name}}></app-header>
+    <div *ngIf="showSideBar==true">
     <app-sidebar2></app-sidebar2>
+</div>
     <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
     
-    <div class="viewCameraContainer">
+    <div class="viewCameraContainer" [style]="{'margin-left': (this.showSideBar==false)?'0px':'65px'}">
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
         
        

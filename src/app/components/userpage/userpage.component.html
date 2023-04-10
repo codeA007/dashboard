@@ -1,22 +1,43 @@
-<app-header name="Admin"></app-header>
-<app-user-sidebar></app-user-sidebar>
+<app-header name="User"></app-header>
+<!-- <app-user-sidebar></app-user-sidebar> -->
+<div class="options">
+    <a routerLink='/user/viewCamera'>View Cameras</a>
+    <a routerLink="/user/search">Search</a>
+    <a routerLink="/user/results">Results</a>
+    <!-- <a routerLink="/user/"></a> -->
+</div>
 <div class="userContainer">
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>
-    <h5>ShrowRoom Name</h5>
-    <button (click)="start()" class="btn btn-info">Start</button>
-    <button (click)="stop()" class="btn btn-info">Stop</button>
+    <div class="header">
+        <h5>ShowRoom Name</h5>
+        <button class="startBtn" (click)="start()"
+        [ngStyle]="{'background-color': (startANPR==true) ? '#7acd21' : 'red'}"
+        >{{btnName}}</button>
+    </div>
+    <!-- <button (click)="start()" class="btn btn-info">Start</button>
+    <button (click)="stop()" class="btn btn-info">Stop</button> -->
     <!-- <div class="dataContainer" *ngFor="let image of this.datas;index as i;"> -->
+        <div class="headingContainer">
+            <p scope="col">Vehicle Img </p>
+            <p scope="col">NoPlate Img </p>
+            <p scope="col">Vehicle No</p>
+            <p scope="col">Date</p>
+            <p scope="col">Entry Time</p>
+            <p scope="col">Exit Time</p>
+</div>
     <div class="dataContainer" *ngFor="let image of datas | paginate :{
         itemsPerPage:5,
         currentPage:page,
         totalItems:totalRecords}">
-        <img (click)="bigImage(image)" src=" https://i.pinimg.com/564x/d0/19/df/d019df2153f04c8a0a1dd990e2706091.jpg"
+        <img (click)="bigImage(image)" [src]="ip+'/getNumberplate/'+image.NP_img_path" alt="">
+        <img (click)="vImage(image)" [src]="ip+'/getVehicle/'+image.vehicle_img_path"
             alt="">
-        <p class="numberPlate">{{this.image.numberPlate}}</p>
-        <p class="timestamp">{{this.image.timeStamp}}</p>
-        <p class="timestamp">Any</p>
+        <p class="numberPlate">{{image.lp}}</p>
+        <p class="numberPlate">{{image.date}}</p>
+        <p class="numberPlate">{{image.entry_time}}</p>
+        <p class="numberPlate">{{image.exit_time}}</p>
         <!-- <div class="checker">
             <button class="correct" (click)="correct()">Correct</button>
             <button class="wrong" (click)="wrong()">Wrong</button>

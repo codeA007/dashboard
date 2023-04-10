@@ -1,5 +1,5 @@
 import { Component,OnInit,OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import{CameraService} from '../../services/camera.service';
 import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
@@ -22,6 +22,8 @@ export class ViewCameraComponent implements OnInit {
   department?:String;
   displayStatus= false;
   id:any;
+  name='Admin'
+  showSideBar= true;
   show?:boolean;
   datas:any[]=[];
   timer?:any;
@@ -34,6 +36,11 @@ export class ViewCameraComponent implements OnInit {
   });
   ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   ngOnInit(){
+    if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
+      console.log(this.router.url,"url");
+      this.showSideBar = false;
+      this.name = 'User';
+    }
     console.log(`Bearer ${localStorage.getItem('token')}`);
     
     this.show = true;

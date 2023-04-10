@@ -2,9 +2,9 @@
     
    <app-sidebar></app-sidebar>
     <a routerLink='/admin' class="addShowroom"><fa-icon [icon]="home"></fa-icon></a>
-    <a routerLink='/viewCamera' class="addShowroom"><fa-icon [icon]="faList"></fa-icon></a>
+    <a routerLink='/admin/viewCamera' class="addShowroom"><fa-icon [icon]="faList"></fa-icon></a>
    
-        <a routerLink='/addCamera' class="addShowroom"><fa-icon [icon]="faCameraRetro"></fa-icon></a>
-        <a routerLink='/search' class="addShowroom"><fa-icon [icon]="search"></fa-icon></a>
-            <a routerLink='/results' class="addShowroom"><fa-icon [icon]="faPoll"></fa-icon></a>
+        <a routerLink='/admin/addCamera' *ngIf="addCamera==true" class="addShowroom"><fa-icon [icon]="faCameraRetro"></fa-icon></a>
+        <a routerLink='/admin/search' class="addShowroom"><fa-icon [icon]="search"></fa-icon></a>
+            <a routerLink='/admin/results' class="addShowroom"><fa-icon [icon]="faPoll"></fa-icon></a>
 </div>

@@ -7,6 +7,7 @@ import { faFile} from '@fortawesome/free-solid-svg-icons';
 import{CameraService} from '../../services/camera.service';
 import { ShowroomService } from '../../services/showroom.service';
 import dayjs from 'dayjs/esm';
+import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 // import { saveAs } from 'file-saver';
 import {saveAs} from 'file-saver';
 // import { CameraService } from '../../services/camera.service';
@@ -17,12 +18,15 @@ import {saveAs} from 'file-saver';
   styleUrls: ['./results.component.css']
 })
 export class ResultsComponent implements OnInit {
+  // constructor(){}
   file!:any;
   showroomName: any='select showroom';
-  names=[]
+  names=[];
+  showSideBar= true;
   fileIcon=faFile
   color='';
   check: any;
+  name='Admin'
 
  
   
@@ -31,13 +35,18 @@ fileUpload(event:any){
   console.log(event.target.files);
 }
 selected: { startDate: dayjs.Dayjs; endDate: dayjs.Dayjs };
-  constructor(private cameraService:CameraService, private showRoomService:ShowroomService) {
+  constructor(private cameraService:CameraService, private showRoomService:ShowroomService,private router:Router) {
     this.selected = {
       startDate: dayjs('2023-01-01T00:00Z'),
       endDate: dayjs('2023-02-20T00:00Z')
     };
   }
   ngOnInit(): void {
+    if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
+      console.log(this.router.url,"url");
+      this.showSideBar = false;
+      this.name = 'User'
+    }
     this.showRoomService.getShowroomsList().subscribe((data)=>{
       this.names = data.showrooms;
       console.log(data);
