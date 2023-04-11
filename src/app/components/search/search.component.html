@@ -4,9 +4,57 @@
 </div>
 <h5>Please Select date...</h5>
 <div class="searchContainer">
+    <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
+        <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
+    </div>
+    <div class="controls">
+    <div class="row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block drop">
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    {{showroomName}}
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button (click)="showroom(this.name)" ngbDropdownItem
+                        *ngFor="let name of this.names;index as i;">{{name}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="submit">
     <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
     [timePickerIncrement]="15" [timePicker24Hour]="true" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
     [(ngModel)]="selected" class="form-control" />
-    <button (click)="submit()">Search  <fa-icon [icon]="search"></fa-icon></button>
+    <button class="submitBtn" (click)="submit()">Search  <fa-icon [icon]="search"></fa-icon></button>
 </div>
+</div>
+<div class="headingContainer">
+    <p scope="col">Vehicle Img </p>
+    <p scope="col">NoPlate Img </p>
+    <p scope="col">Vehicle No</p>
+    <p scope="col">Date</p>
+    <p scope="col">Entry Time</p>
+    <p scope="col">Exit Time</p>
+</div>
+<h5 style="text-align: center;">{{err}}</h5>
+<div class="dataContainer" *ngFor="let image of datas | paginate :{
+    itemsPerPage:4,
+    currentPage:page,
+    totalItems:totalRecords }">
+
+        <img (click)="bigImage(image)" [src]="ip+'/getNumberplate/'+image.NP_img_path" alt="">
+        <img (click)="vImage(image)" [src]="ip+'/getVehicle/'+image.vehicle_img_path"
+            alt="">
+        <p class="numberPlate">{{image.lp}}</p>
+        <p class="numberPlate">{{image.date}}</p>
+        <p class="numberPlate">{{image.entry_time}}</p>
+        <p class="numberPlate">{{image.exit_time}}</p>
+        <!-- <p class="timestamp">{{this.image.timeStamp}}</p> -->
+        <!-- <p class="timestamp">Any</p> -->
+        <!-- </div> -->
+    </div>
+    <pagination-controls class="pageControls" (pageChange)="page= $event"></pagination-controls>
+</div>
+
 

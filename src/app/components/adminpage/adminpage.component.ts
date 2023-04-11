@@ -1,8 +1,8 @@
 import { Component,OnInit,OnDestroy} from '@angular/core';
 import { faCameraRetro,faPoll,faList,faSearch} from '@fortawesome/free-solid-svg-icons';
 import { ShowroomService } from '../../services/showroom.service';
-import {DataService} from '../../data.service';
 import { CameraService } from '../../services/camera.service';
+import {DataService} from '../../data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as Options from '../../../assets/config.json';
@@ -24,13 +24,13 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
   page = 1;
   showImg ='false';
   imgUrl = ''
+  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   faCameraRetro = faCameraRetro;
   faPoll = faPoll;
   faList = faList;
   id!: NodeJS.Timer;
   btnName='START';
   startANPR=true;
-  ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
   showroomName:String='Select ShowRoomName';
   // ip=`http://${(Options as any).default.ip}/${(Options as any).default.port}`;
   datas:any[]=[
@@ -72,10 +72,10 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
 //  any:'Any'
 //  },
    ];
-   totalRecords:any = this.datas.length;
    pageChange(){
-
-   }
+     
+  }
+  totalRecords:any = this.datas.length;
    bigImage(image:any){
     console.log(image);
     this.showImg ='true'
