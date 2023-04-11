@@ -37,6 +37,7 @@ import { Sidebar2Component } from './components/sidebar2/sidebar2.component';
 import { SearchComponent } from './components/search/search.component';
 import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.component';
 import FileSaver from 'file-saver'
+import { DatePipe } from '@angular/common';
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 
@@ -87,7 +88,7 @@ import FileSaver from 'file-saver'
       firstDay: 0
     })
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard,DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

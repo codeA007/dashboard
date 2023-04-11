@@ -30,10 +30,9 @@ names!:any[]
 
 ngOnInit(): void {
   navigator.geolocation.getCurrentPosition((position) => {
-    console.log(position);
+    console.log(position,"po");
     this.latitude = position.coords.latitude;
     this.longitude =position.coords.longitude;
-
   })
 
   this.showroomService.getDealerships().subscribe((data:any)=>{

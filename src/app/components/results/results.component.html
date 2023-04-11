@@ -7,7 +7,7 @@
     
     <!-- <mat-toolbar>Single datepicker with custom invalid date & custom class on date</mat-toolbar> -->
     <div class="results">
-        <div class="row">
+        <div class="row" *ngIf="showSideBar==true">
             <div class="col">
                 <div ngbDropdown class="d-inline-block drop">
                     <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
@@ -20,11 +20,11 @@
                 </div>
             </div>
         </div>
-        <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class="fileSelector">
         <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
-            [timePickerIncrement]="15" [timePicker24Hour]="false" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
-            [(ngModel)]="selected" class="form-control" />
+        [timePickerIncrement]="15" [timePicker24Hour]="false" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
+        [(ngModel)]="selected" class="form-control" />
         <button class="submit" (click)="submit()">submit</button>
+        <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class="fileSelector">
         <button  class="download" (click)="downloadFile()">downloadFile <fa-icon [icon]="fileIcon"></fa-icon></button>
     </div>
 </div>

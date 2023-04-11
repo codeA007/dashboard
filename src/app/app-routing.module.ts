@@ -31,7 +31,7 @@ const routes: Routes = [
   {path:'showrooms',component:ShowroomsComponent,canActivate:[AuthGuard]},
   {path:'analytics',component:AnalyticsComponent,},
   {path:'admin/results',component:ResultsComponent},
-  {path:'admin/search',component:SearchComponent,},
+  {path:'admin/search',component:SearchComponent,canActivate:[AdminGuard] },
   {path:'admin/addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
   {path:'admin/viewCamera',component:ViewCameraComponent,canActivate:[AdminGuard] },
   {path:'user/viewCamera',component:ViewCameraComponent,canActivate:[UserGuard] },

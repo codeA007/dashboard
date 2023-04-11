@@ -11,12 +11,16 @@ import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   show =false;
+  showArrow=true;
   constructor(private authService: AuthService,private router: Router,private route:ActivatedRoute){ 
   }
   ngOnInit(): void {
     if(this.router.url == '/admin' || this.router.url == '/admin/results' || this.router.url == '/admin/search' || this.router.url=='/user'  || this.router.url=='/admin/viewCamera' ||this.router.url=='/admin/addCamera'  ||this.router.url=='/editImage'){
       // console.log(this.router.url);
       this.show = true;
+      if( this.router.url=='/user'){
+        this.showArrow = false;
+      }
     }
     else{
       this.show = false;
