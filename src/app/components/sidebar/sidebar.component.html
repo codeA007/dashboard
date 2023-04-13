@@ -8,11 +8,11 @@
 		<button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
 	</div>
 	<div class="offcanvas-body">
-        <a  *ngIf="show==true" routerLink='/admin' class="addShowroom">Home Page</a>
-        <a routerLink='/admin/results' class="addShowroom"> View Results <fa-icon [icon]="faPoll"></fa-icon></a>
+        <a  *ngIf="show==true" routerLink={{homepage}} class="addShowroom">Home Page</a>
+        <a routerLink={{resultsRoute}} class="addShowroom"> View Results <fa-icon [icon]="faPoll"></fa-icon></a>
         <a  *ngIf="show==true" routerLink='/admin/addCamera' class="addShowroom">Add Camera <fa-icon [icon]="faCameraRetro"></fa-icon></a>
        
-        <a routerLink='/admin/viewCamera' class="addShowroom"> View Cameras <fa-icon [icon]="faList"></fa-icon></a>
+        <a routerLink={{viewCameraRoute}} class="addShowroom"> View Cameras <fa-icon [icon]="faList"></fa-icon></a>
 	</div>
 </div>
 </ng-template>

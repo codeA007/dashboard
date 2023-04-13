@@ -2,6 +2,7 @@
     <app-loading [show]=show></app-loading>
 </div>
 <ng-template #elseBlock>
+    <app-header name={{name}}></app-header>
     <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
         <div class="modalBoxContainer">
             <h4>Edit Camera Details</h4>
@@ -18,13 +19,12 @@
             </form>
         </div>
     </div>
-    <app-header name={{name}}></app-header>
-    <div *ngIf="showSideBar==true">
-    <app-sidebar2></app-sidebar2>
+    <div >
+        <app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
 </div>
     <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
     
-    <div class="viewCameraContainer" [style]="{'margin-left': (this.showSideBar==false)?'0px':'65px'}">
+    <div class="viewCameraContainer">
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
         
        

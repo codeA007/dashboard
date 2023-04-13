@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component ,Input} from '@angular/core';
 import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 // import { faBars} from '@fortawesome/free-solid-svg-icons';
 
@@ -18,6 +18,10 @@ faPoll = faPoll;
 faList = faList;
 arrow = faArrowRight;
 show=false;
+// @Input() searchRoute='';
+  @Input() viewCameraRoute='';
+  @Input() resultsRoute='';
+  @Input() homepage='';
 	constructor(private offcanvasService: NgbOffcanvas,private router: Router,private route:ActivatedRoute) {
   }
 ngOnInit(): void {

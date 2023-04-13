@@ -1,11 +1,11 @@
 <app-header name="User"></app-header>
-<!-- <app-user-sidebar></app-user-sidebar> -->
-<div class="options">
+<app-user-sidebar></app-user-sidebar>
+<!-- <div class="options">
     <a routerLink='/user/viewCamera'>View Cameras</a>
     <a routerLink="/user/search">Search</a>
     <a routerLink="/user/results">Results</a>
-    <!-- <a routerLink="/user/"></a> -->
-</div>
+</div> -->
+<!-- <a routerLink="/user/"></a> -->
 <div class="userContainer">
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>

@@ -28,6 +28,10 @@ export class ViewCameraComponent implements OnInit {
   datas:any[]=[];
   timer?:any;
   errorMessage = 'error';
+  searchRoute= '';
+  viewCameraRoute='';
+  resultsRoute='';
+  home=''
   errorDisplayStatus = false;
   editCameraForm = new FormGroup({
     cameraname:new FormControl(''),
@@ -40,6 +44,17 @@ export class ViewCameraComponent implements OnInit {
       console.log(this.router.url,"url");
       this.showSideBar = false;
       this.name = 'User';
+      this.name = 'User'
+      this.searchRoute='/user/search';
+      this.viewCameraRoute = '/user/viewCamera'
+      this.resultsRoute='/user/results'
+      this.home='/user'
+    }
+    else{
+      this.searchRoute='/admin/search';
+      this.viewCameraRoute = '/admin/viewCamera'
+      this.resultsRoute='/admin/results';
+      this.home='/admin';
     }
     console.log(`Bearer ${localStorage.getItem('token')}`);
     

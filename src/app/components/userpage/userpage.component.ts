@@ -21,6 +21,7 @@ export class UserpageComponent implements OnInit {
   imgUrl: any;
   btnName='START';
   startANPR=true;
+  timmer = (Options as any).default.timmer;
   constructor(private dataService: DataService,private showroomService:ShowroomService,private cameraService:CameraService){}
 
   ngOnInit() {
@@ -119,7 +120,7 @@ export class UserpageComponent implements OnInit {
          // }
          //  ];
          })
-       },2000)
+       },this.timmer)
       }
     })
   }

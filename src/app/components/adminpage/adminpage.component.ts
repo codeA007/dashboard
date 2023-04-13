@@ -31,6 +31,7 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
   id!: NodeJS.Timer;
   btnName='START';
   startANPR=true;
+  timmer = (Options as any).default.timmer;
   showroomName:String='Select ShowRoomName';
   // ip=`http://${(Options as any).default.ip}/${(Options as any).default.port}`;
   datas:any[]=[
@@ -96,7 +97,7 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
   start(){
     console.log(this.showroomName);
     let start = {
-      showroomName:'KIA',
+      showroomName:this.showroomName,
       startANPR:this.startANPR
     }
     this.btnName = 'STOP';
@@ -132,7 +133,7 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
          // }
          //  ];
          })
-       },2000)
+       },this.timmer)
       }
     })
   }

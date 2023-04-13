@@ -1,8 +1,8 @@
 <div class="resultsContainer">
     <p class="error" [ngStyle]="{background:color}">{{check}}</p>
     <app-header name={{name}}></app-header>
-    <div *ngIf="showSideBar==true">
-        <app-sidebar2></app-sidebar2>
+    <div >
+        <app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
     </div>
     
     <!-- <mat-toolbar>Single datepicker with custom invalid date & custom class on date</mat-toolbar> -->
@@ -23,8 +23,8 @@
         <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
         [timePickerIncrement]="15" [timePicker24Hour]="false" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
         [(ngModel)]="selected" class="form-control" />
+        <button  class="download" (click)="downloadFile()">downloadFile <fa-icon [icon]="fileIcon"></fa-icon></button>
         <button class="submit" (click)="submit()">submit</button>
         <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class="fileSelector">
-        <button  class="download" (click)="downloadFile()">downloadFile <fa-icon [icon]="fileIcon"></fa-icon></button>
     </div>
 </div>

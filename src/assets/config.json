@@ -2,5 +2,6 @@
     "superAdminEdit":true,
     "adminEdit":false,
     "ip":"192.168.1.112",
-    "port":"5000"
+    "port":"5000",
+    "timmer":2000
 }

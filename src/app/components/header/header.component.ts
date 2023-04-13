@@ -15,12 +15,12 @@ export class HeaderComponent implements OnInit {
   constructor(private authService: AuthService,private router: Router,private route:ActivatedRoute){ 
   }
   ngOnInit(): void {
-    if(this.router.url == '/admin' || this.router.url == '/admin/results' || this.router.url == '/admin/search' || this.router.url=='/user'  || this.router.url=='/admin/viewCamera' ||this.router.url=='/admin/addCamera'  ||this.router.url=='/editImage'){
+    if(this.router.url == '/admin' || this.router.url == '/admin/results' || this.router.url == '/admin/search' || this.router.url=='/user'  || this.router.url=='/admin/viewCamera' ||this.router.url=='/admin/addCamera'  ||this.router.url=='/editImage'||this.router.url=='/user/results'||this.router.url=='/user/results' ||this.router.url=='/user/search' || this.router.url=='/user/viewCamera' ){
       // console.log(this.router.url);
       this.show = true;
-      if( this.router.url=='/user'){
-        this.showArrow = false;
-      }
+      // if( this.router.url=='/user'){
+      //   this.showArrow = false;
+      // }
     }
     else{
       this.show = false;

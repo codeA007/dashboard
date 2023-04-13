@@ -3,7 +3,7 @@
         <img src="{{imgUrl}}" alt="">
     </div>
 </div> -->
-<app-sidebar2></app-sidebar2>
+<app-sidebar2 homepage="/admin" searchRoute="/admin/search" viewCameraRoute="/admin/viewCamera" resultsRoute="/admin/results"></app-sidebar2>
 <div class="adminContainer">
     <app-header name="Admin"></app-header>
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">

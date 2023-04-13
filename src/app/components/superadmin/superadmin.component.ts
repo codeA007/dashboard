@@ -30,6 +30,7 @@ export class SuperadminComponent implements OnInit {
   showroomName!:any;
   startANPR=true;
   ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
+  timmer = (Options as any).default.timmer;
   editNo =  new FormGroup({
     number:new FormControl('')
   })
@@ -106,7 +107,7 @@ edit(image: any){
 start(){
   // console.log(this.showroomName);
   let start = {
-    showroomName:'KIA',
+    showroomName:this.showroomName,
     startANPR:this.startANPR
   }
   this.btnName = 'STOP';
@@ -142,7 +143,7 @@ start(){
        // }
        //  ];
        })
-     },2000)
+     },this.timmer)
     }
   })
 }

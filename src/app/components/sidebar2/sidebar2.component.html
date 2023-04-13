@@ -1,10 +1,10 @@
 <div class="sideNavContainer">
     
-   <app-sidebar></app-sidebar>
-    <a routerLink='/admin' class="addShowroom"><fa-icon [icon]="home"></fa-icon></a>
-    <a routerLink='/admin/viewCamera' class="addShowroom"><fa-icon [icon]="faList"></fa-icon></a>
+   <app-sidebar homepage="{{home}}"viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar>
+    <a routerLink={{homepage}} class="addShowroom"><fa-icon [icon]="home"></fa-icon></a>
+    <a routerLink={{viewCameraRoute}} class="addShowroom"><fa-icon [icon]="faList"></fa-icon></a>
    
         <a routerLink='/admin/addCamera' *ngIf="addCamera==true" class="addShowroom"><fa-icon [icon]="faCameraRetro"></fa-icon></a>
-        <a routerLink='/admin/search' class="addShowroom"><fa-icon [icon]="search"></fa-icon></a>
-            <a routerLink='/admin/results' class="addShowroom"><fa-icon [icon]="faPoll"></fa-icon></a>
+        <a routerLink={{searchRoute}} class="addShowroom"><fa-icon [icon]="search"></fa-icon></a>
+            <a routerLink={{resultsRoute}} class="addShowroom"><fa-icon [icon]="faPoll"></fa-icon></a>
 </div>

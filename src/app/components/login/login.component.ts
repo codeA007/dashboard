@@ -3,6 +3,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
+import * as Options from '../../../assets/config.json';
 
  
 @Component({
@@ -11,6 +12,7 @@ import { faAddressCard } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit   {
+  timmer = (Options as any).default.timmer;
  username = "username";
  condition:any= false;
  message!:String;
@@ -24,6 +26,8 @@ export class LoginComponent implements OnInit   {
     password:new FormControl('')
  });
   ngOnInit(){ 
+    // console.log(typeof (this.timmer));
+    
     if(localStorage.getItem('token') ){
       this.authService.verifyToken().subscribe(data => {
         console.log(data);

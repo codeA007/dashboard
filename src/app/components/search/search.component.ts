@@ -28,7 +28,11 @@ export class SearchComponent  implements OnInit{
   page = 1;
   showImg ='false';
   imgUrl = '';
-  err=''
+  err='';
+  searchRoute= '';
+  viewCameraRoute='';
+  resultsRoute='';
+  home=''
   ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
 constructor(private router: Router,private route:ActivatedRoute,private datePipe:DatePipe,private showroomService:ShowroomService,private cameraService:CameraService){
   // selectedMoments: { startDate: Moment | any, endDate: Moment | any }
@@ -46,6 +50,16 @@ ngOnInit(): void {
     console.log(this.router.url,"url");
     this.showSideBar = false;
     this.name = 'User'
+    this.searchRoute='/user/search';
+    this.viewCameraRoute = '/user/viewCamera'
+    this.resultsRoute='/user/results'
+    this.home='/user'
+  }
+  else{
+    this.searchRoute='/admin/search';
+    this.viewCameraRoute = '/admin/viewCamera'
+    this.resultsRoute='/admin/results';
+    this.home='/admin';
   }
 }
 submit(){
@@ -70,6 +84,8 @@ submit(){
       this.err =''
       this.datas = data
     }
+  },(err)=>{
+    this.err=err.message;
   })
 }
 showroom(name:any){
