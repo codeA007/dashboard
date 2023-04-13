@@ -2,24 +2,24 @@
     <app-loading [show]=show></app-loading>
 </div>
 <ng-template #elseBlock>
-    <app-header name={{name}}></app-header>
     <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
         <div class="modalBoxContainer">
             <h4>Edit Camera Details</h4>
             <form action="" [formGroup]="editCameraForm">
                 <label>Camera Name</label>
                 <input type="text" formControlName="cameraname" placeholder="Enter Camera Name"
-                    [(ngModel)]="cameraname">
+                [(ngModel)]="cameraname">
                 <label>ipAddress</label>
                 <input type="text" placeholder="Enter IPName" formControlName="ipaddress" [(ngModel)]="ipaddress">
                 <label>Department</label>
                 <input type="text" placeholder="Enter Location" formControlName="department"
-                    [(ngModel)]="department">
+                [(ngModel)]="department">
                 <button (click)="editDone()">Edit</button>
             </form>
         </div>
     </div>
     <div >
+        <app-header name={{name}}></app-header>
         <app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
 </div>
     <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
@@ -31,19 +31,15 @@
         <!-- <p *ngIf="check==true && check !=undefined ; else elseBlock">Camera is working</p> -->
         <ng-template #elseBlock>dkfdsfd</ng-template>
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Camera Name</th>
-                    <th scope="col">IP Name</th>
-                    <th scope="col">Department</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Geo Fencing</th>
-                    <th scope="col">check Camera</th>
-                    <th scope="col">Edit</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
+        <div class="headingContainer">
+                    <p scope="col">IP Name</p>
+                    <p scope="col">Camera Name</p>
+                    <p scope="col">Department</p>
+                    <p scope="col">Location</p>
+                    <p scope="col">Geo Fencing</p>
+                    <p scope="col">check Camera</p>
+                    <p scope="col">Edit</p>
+                    <p scope="col">Delete</p>
             <!-- <tbody>
             <tr *ngFor="let data of datas; index as i">
                 <th>{{ i + 1 }}</th>
@@ -56,7 +52,7 @@
                     Fencing</button>
             </tr>
         </tbody> -->
-        </table>
+    </div>
         <div class="dataContainer"  *ngFor="let data of datas | paginate :{
             itemsPerPage:5,
             currentPage:page,
@@ -67,7 +63,7 @@
             <img [src]="ip+'/getImage/'+data.img" alt="">
             <button class="geoFencing" (click)="geoFencing(data)">Geo
                 Fencing</button>
-            <p>{{data.cam_status}}</p>
+            <p>{{data.ip_status}}</p>
             <!-- <button class="checkCamera" (click)="checkCamera()">Check Camera</button> -->
             <fa-icon class="edit" (click)="editCamera(data)" [icon]="faEdit"></fa-icon>
             <fa-icon class="delete" (click)="deleteCamera(data)" [icon]="faTrash"></fa-icon>

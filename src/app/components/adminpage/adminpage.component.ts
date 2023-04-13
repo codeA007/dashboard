@@ -135,6 +135,8 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
          })
        },this.timmer)
       }
+    },(err)=>{
+      this.btnName = 'TRY AGAIN'
     })
   }
 

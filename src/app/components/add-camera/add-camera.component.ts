@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup,FormControl,FormControlName,Validators } from '@angular/forms';
 import{CameraService} from '../../services/camera.service';
+// import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 // import { Router } from '@angular/router';
 
 @Component({
@@ -13,6 +14,21 @@ export class AddCameraComponent implements OnInit {
   constructor(private cameraService: CameraService,private router:Router) {}
   names=[]
   ngOnInit(): void {
+    if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
+      console.log(this.router.url,"url");
+      // this.showSideBar = false;
+      // this.name = 'User'
+      this.searchRoute='/user/search';
+      this.viewCameraRoute = '/user/viewCamera'
+      this.resultsRoute='/user/results'
+      this.home='/user'
+    }
+    else{
+      this.searchRoute='/admin/search';
+      this.viewCameraRoute = '/admin/viewCamera'
+      this.resultsRoute='/admin/results';
+      this.home='/admin';
+    }
     this.cameraService.getBrandNames().subscribe(data=>{
      this.names = data
     })
@@ -23,6 +39,10 @@ export class AddCameraComponent implements OnInit {
   color='';
   check='';
   errorDisplayStatus = false;
+  searchRoute= '';
+  viewCameraRoute='';
+  resultsRoute='';
+  home=''
 //   SCW_line
 // SCW_NVR
 // SCW_networker
@@ -71,7 +91,7 @@ submit(){
       this.check = ''
     },1000)
     if(data.result == 'Successfully added camera!'){
-      this.router.navigate(['/viewCamera']);
+      this.router.navigate(['admin/viewCamera']);
     }
   },(err)=>{
     // console.log(err);

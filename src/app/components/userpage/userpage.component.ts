@@ -122,6 +122,10 @@ export class UserpageComponent implements OnInit {
          })
        },this.timmer)
       }
+    },(err)=>{
+      if(err){
+        this.btnName = 'TRY AGAIN'
+      }
     })
   }
 

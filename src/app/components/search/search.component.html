@@ -8,7 +8,7 @@
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>
     <div class="controls">
-    <div class="row">
+    <div class="row" [ngStyle]="{'display': (showSideBar==true) ?'block' : 'none'}">
         <div class="col">
             <div ngbDropdown class="d-inline-block drop">
                 <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>

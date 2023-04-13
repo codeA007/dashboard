@@ -5,13 +5,14 @@ import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 // import { Router } from '@angular/router';
 import * as Options from '../../../assets/config.json';
+// import * as Options from '../../../assets/config.json';
 
 @Component({
   selector: 'app-view-camera',
   templateUrl: './view-camera.component.html',
   styleUrls: ['./view-camera.component.css']
 })
-export class ViewCameraComponent implements OnInit {
+export class ViewCameraComponent implements OnInit,OnDestroy {
   // constructor(private cameraService:CameraService){}
   check?:String='';
   color:String='';
@@ -26,12 +27,13 @@ export class ViewCameraComponent implements OnInit {
   showSideBar= true;
   show?:boolean;
   datas:any[]=[];
-  timer?:any;
+  timer!: NodeJS.Timer;;
   errorMessage = 'error';
   searchRoute= '';
   viewCameraRoute='';
   resultsRoute='';
   home=''
+  time =(Options as any).default.viewCameraTimer
   errorDisplayStatus = false;
   editCameraForm = new FormGroup({
     cameraname:new FormControl(''),
@@ -59,37 +61,45 @@ export class ViewCameraComponent implements OnInit {
     console.log(`Bearer ${localStorage.getItem('token')}`);
     
     this.show = true;
-    this.cameraService.viewCamera().subscribe((data)=>{
-      this.datas=data
-      console.log(this.datas);
-      this.show = false;
-    },(err)=>{
-      this.errorMessage = err.statusText+'😢😥';      
-      this.errorDisplayStatus = true;
-      this.show = false;
+    // this.cameraService.viewCamera().subscribe((data)=>{
+    //   this.datas=data
+    //   console.log(this.datas);
+    //   this.show = false;
+    // },(err)=>{
+    //   this.errorMessage = err.statusText+'😢😥';      
+    //   this.errorDisplayStatus = true;
+    //   this.show = false;
+    //     if(err.error.msg=='Token has expired'){
+    //       localStorage.removeItem('token');
+    //       this.router.navigate(['/login']);
+    //     }
+    // },)
+
+    this.timer = setInterval(()=>{
+      this.cameraService.viewCamera().subscribe((data)=>{
+        this.datas=data
+        console.log(this.datas);
+        this.show = false;
+      },(err)=>{
+        this.errorMessage = err.statusText+'😢😥';      
+        this.errorDisplayStatus = true;
+        this.show = false;
         if(err.error.msg=='Token has expired'){
           localStorage.removeItem('token');
           this.router.navigate(['/login']);
         }
-    },)
+      })
+    },this.time)
 
-    // this.timer = setInterval(()=>{
-    //   this.cameraService.viewCamera().subscribe((data)=>{
-    //     this.datas=data
-    //     console.log(this.datas);
-    //     this.show = false;
-    //   },(err)=>{
-    //     this.errorMessage = err.statusText+'😢😥';      
-    //     this.errorDisplayStatus = true;
-    //     this.show = false;
-    //   })
-    // },6000)
+    console.log(this.timer);
+    
 
   }
   totalRecords:any = this.datas.length;
   page=1
   ngOnDestroy() {
     clearInterval(this.timer);
+    console.log(this.timer);
   }
  
   // datas = [
@@ -131,7 +141,7 @@ this.cameraService.checkCamera().subscribe(data =>{
 
   setTimeout(()=>{
     this.check =''
-  },1000)
+  },2000)
 },(err)=>{
   this.errorDisplayStatus = true;
   this.errorMessage = err.message;

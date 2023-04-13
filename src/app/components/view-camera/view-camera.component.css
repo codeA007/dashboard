@@ -12,11 +12,11 @@
   margin: 10px 2px;
   cursor: pointer;
 }
-p {
+/* p {
   flex-basis: 100px;
   flex-shrink: 0;
   flex-grow: 0;
-}
+} */
 .dataContainer {
   display: flex;
   flex-direction: row;
@@ -25,9 +25,9 @@ p {
   align-items: center;
   border: 2px solid #cfd4da;
   background: #f8f9fb;
-  margin: 10px 0;
+  /* margin: 10px 0; */
   align-self: center;
-  margin: 10px 0;
+  margin: 7px 0;
 }
 .dataContainer img {
   width: 100px;
@@ -150,4 +150,23 @@ th{
   display: flex;
   justify-content: space-around;
   background: #f1f2f6;
+}
+
+p {
+  flex-basis: 110px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: center;
+}
+
+.headingContainer{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+fa-icon{
+  flex-basis: 110px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  text-align: center;
 }

@@ -145,6 +145,8 @@ start(){
        })
      },this.timmer)
     }
+  },(err)=>{
+    this.btnName = 'TRY AGAIN';
   })
 }
 done(){

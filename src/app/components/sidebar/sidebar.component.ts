@@ -25,7 +25,7 @@ show=false;
 	constructor(private offcanvasService: NgbOffcanvas,private router: Router,private route:ActivatedRoute) {
   }
 ngOnInit(): void {
-  if(this.router.url == '/user'){
+  if(this.router.url == '/user'|| this.router.url == '/user/viewCamera'||this.router.url == '/user/search'||this.router.url == '/user/results'){
 	this.show = false;
   }
   else{
