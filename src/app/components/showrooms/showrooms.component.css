@@ -11,6 +11,9 @@
   background-color: #75bce6;
   color: #fff;
 }
+.err{
+  text-align: center;
+}
 
 .showroomContainerBtn {
   width: 100vw;

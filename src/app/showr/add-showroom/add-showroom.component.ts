@@ -18,6 +18,8 @@ export class AddShowroomComponent implements OnInit {
   locationJs:any;
   latitude?:Number;
   longitude?:Number;
+  vType?:String='ShowRoom Type';
+  types=['2-wheeler','4-wheeler'];
 addShowroom =new FormGroup({
   // delarShipName:new FormControl(''),
   showroomName: new FormControl(''),
@@ -49,9 +51,12 @@ ngOnInit(): void {
 delarship(name:any){
   this.delarShipName = name;
 }
+typeBtn(type:string){
+  this.vType = type;
+}
 submitShowroomDetails(){
   // if(this.addShowroom.value.showroomName==''||this.addShowroom.value.email==''||this.addShowroom.value.)
-  let newData = {...this.addShowroom.value,latitude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName};
+  let newData = {...this.addShowroom.value,latitude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName,type:this.vType};
 console.log(newData);
 this.showroomService.addShowroom(newData).subscribe(data=>{
   console.log(data);

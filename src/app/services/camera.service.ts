@@ -26,9 +26,9 @@ export class CameraService {
     return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/editCamera`,data,
     {headers:header})
   }
- viewCamera():Observable<any>{
+ viewCamera(data:any):Observable<any>{
   let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
-    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/viewCamera`,{headers:header})
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/viewCamera`,data,{headers:header})
   }
   deleteCamera(data:Object):Observable<any>{
     let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));

@@ -5,6 +5,7 @@ import { faEdit,faTrash} from '@fortawesome/free-solid-svg-icons';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 // import { Router } from '@angular/router';
 import * as Options from '../../../assets/config.json';
+import { ShowroomService } from '../../services/showroom.service';
 // import * as Options from '../../../assets/config.json';
 
 @Component({
@@ -23,6 +24,8 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
   department?:String;
   displayStatus= false;
   id:any;
+  names=[]
+  showroomName:String='Select ShowRoomName';
   name='Admin'
   showSideBar= true;
   show?:boolean;
@@ -41,6 +44,7 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
     department:new FormControl(''),
   });
   ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
+  constructor(private router: Router,private cameraService:CameraService,private showroomService:ShowroomService ) {}
   ngOnInit(){
     if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
       console.log(this.router.url,"url");
@@ -58,9 +62,14 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
       this.resultsRoute='/admin/results';
       this.home='/admin';
     }
-    console.log(`Bearer ${localStorage.getItem('token')}`);
-    
     this.show = true;
+    console.log(`Bearer ${localStorage.getItem('token')}`);
+    this.showroomService.getShowroomsList().subscribe((data)=>{
+      this.names = data.showrooms;
+      console.log(data);
+      this.show=false;
+    })
+   
     // this.cameraService.viewCamera().subscribe((data)=>{
     //   this.datas=data
     //   console.log(this.datas);
@@ -75,22 +84,6 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
     //     }
     // },)
 
-    this.timer = setInterval(()=>{
-      this.cameraService.viewCamera().subscribe((data)=>{
-        this.datas=data
-        console.log(this.datas);
-        this.show = false;
-      },(err)=>{
-        this.errorMessage = err.statusText+'😢😥';      
-        this.errorDisplayStatus = true;
-        this.show = false;
-        if(err.error.msg=='Token has expired'){
-          localStorage.removeItem('token');
-          this.router.navigate(['/login']);
-        }
-      })
-    },this.time)
-
     console.log(this.timer);
     
 
@@ -100,6 +93,37 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
   ngOnDestroy() {
     clearInterval(this.timer);
     console.log(this.timer);
+  }
+  showroom(name:any){
+    this.ngOnDestroy();
+    this.showroomName = name;
+    let data={
+      showroomName:this.showroomName
+    }
+    this.show=true
+    console.log(this.showroomName,"names..");
+    
+    this.timer = setInterval(()=>{
+      this.cameraService.viewCamera(data).subscribe((data)=>{
+        this.show=false;
+        console.log(this.showroomName,"timmer");
+        
+        this.datas=data
+        console.log(this.datas);
+        this.show = false;
+      },(err)=>{
+        this.errorMessage = err.statusText+'😢😥';      
+        this.errorDisplayStatus = true;
+        this.show = false;
+        this.ngOnDestroy();
+        if(err.error.msg=='Token has expired'){
+          localStorage.removeItem('token');
+          this.router.navigate(['/login']);
+          this.ngOnDestroy()
+        }
+      })
+    },this.time)
+
   }
  
   // datas = [
@@ -120,7 +144,7 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
   //     cam_status:'on'
   //   },
   // ]
-  constructor(private router: Router,private cameraService:CameraService ) {}
+ 
 geoFencing(data:any){
   console.log('clicked')
   this.router.navigate(['editImage'],{
@@ -166,7 +190,7 @@ editCamera(data:any){
 editDone(){
 this.displayStatus = false;
 console.log(this.editCameraForm.value);
-let newData = {...this.editCameraForm.value,id:this.id}
+let newData = {...this.editCameraForm.value,id:this.id,showroomName:this.showroomName}
 this.cameraService.editCamera(newData).subscribe((data)=>{
   console.log(data,"data");
   this.datas = data
@@ -182,7 +206,8 @@ deleteCamera(data:any){
  let  id=data._id;
  console.log(id,"id");
  let req={
-  id:data._id
+  id:data._id,
+  showroomName:this.showroomName
  }
   this.cameraService.deleteCamera(req).subscribe((data)=>{
     console.log(data);

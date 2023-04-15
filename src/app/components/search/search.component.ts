@@ -29,6 +29,8 @@ export class SearchComponent  implements OnInit{
   showImg ='false';
   imgUrl = '';
   err='';
+  check?:String='';
+  color:String='';
   searchRoute= '';
   viewCameraRoute='';
   resultsRoute='';
@@ -63,6 +65,16 @@ ngOnInit(): void {
   }
 }
 submit(){
+  if(this.showroomName=='Select ShowRoomName'){
+    this.check='please Select showroom Name';
+    this.color='red';
+    setTimeout(()=>{
+      this.check='';
+      this.color=''
+    }
+    ,2000)
+    return
+  }
   let startD  = this.datePipe.transform(this.selected.startDate.$d,'YYYY-MM-dd');
   let endD  = this.datePipe.transform(this.selected.endDate.$d,'YYYY-MM-dd');
   // let endDate = this.selected.endDate.$d;

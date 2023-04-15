@@ -9,10 +9,19 @@
                         {{delarShipName}}
                     </button>
                     <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                        <button (click)="delarship(this.name)" ngbDropdownItem
+                        <button class="dropDownBtn" (click)="delarship(this.name)" ngbDropdownItem
                             *ngFor="let name of this.names;index as i;">{{name}}</button>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div ngbDropdown class="d-inline-block  drop">
+            <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                {{vType}}
+            </button>
+            <div class="dropDownBtn" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                <button (click)="typeBtn(this.type)" ngbDropdownItem
+                    *ngFor="let type of this.types;index as i;">{{type}}</button>
             </div>
         </div>
         <!-- <input type="text" name="" placeholder="Delarship Name" id="" formControlName="delarShipName"> -->

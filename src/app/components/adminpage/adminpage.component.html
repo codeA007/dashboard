@@ -6,6 +6,7 @@
 <app-sidebar2 homepage="/admin" searchRoute="/admin/search" viewCameraRoute="/admin/viewCamera" resultsRoute="/admin/results"></app-sidebar2>
 <div class="adminContainer">
     <app-header name="Admin"></app-header>
+    <p class="error" [ngStyle]="{background:color}">{{check}}</p>
     <div (click)="hideModle($event)" [ngStyle]="{'display': (showImg=='true') ?'block' : 'none'}">
         <app-zoom imgUrl="{{imgUrl}}"></app-zoom>
     </div>

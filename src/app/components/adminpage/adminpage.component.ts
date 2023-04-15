@@ -31,6 +31,8 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
   id!: NodeJS.Timer;
   btnName='START';
   startANPR=true;
+  check?:String='';
+  color:String='';
   timmer = (Options as any).default.timmer;
   showroomName:String='Select ShowRoomName';
   // ip=`http://${(Options as any).default.ip}/${(Options as any).default.port}`;
@@ -96,6 +98,16 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
 
   start(){
     console.log(this.showroomName);
+    if(this.showroomName=='Select ShowRoomName'){
+      this.check='please Select showroom Name';
+      this.color='red';
+      setTimeout(()=>{
+        this.check='';
+        this.color=''
+      }
+      ,2000)
+      return
+    }
     let start = {
       showroomName:this.showroomName,
       startANPR:this.startANPR

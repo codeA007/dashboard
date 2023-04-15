@@ -84,7 +84,7 @@ export class UserpageComponent implements OnInit {
   start(){
     // console.log(this.showroomName);
     let start = {
-      showroomName:'KIA',
+      showroomName:'hero',
       startANPR:this.startANPR
     }
     this.btnName = 'STOP';

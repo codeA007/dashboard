@@ -42,7 +42,8 @@ export class AddCameraComponent implements OnInit {
   searchRoute= '';
   viewCameraRoute='';
   resultsRoute='';
-  home=''
+  home='';
+  submitBtnName='Submit';
 //   SCW_line
 // SCW_NVR
 // SCW_networker
@@ -59,7 +60,7 @@ export class AddCameraComponent implements OnInit {
 // Swann
   
 addCamera = new FormGroup(
-{  
+{ showroomName: new FormControl(''),
   ipaddress: new FormControl(''),
   username:new FormControl(''),
   password:new FormControl(''),
@@ -75,6 +76,7 @@ addCamera = new FormGroup(
 // }); 
 
 submit(){
+  this.submitBtnName = 'Submiting...'
   // console.log({...this.addCamera.value ,brandName:this.brandName});
   // ({...this.addCamera.value ,brand:this.brandName});
   // console.log(this.addCamera.value);
@@ -84,6 +86,7 @@ submit(){
   
   this.cameraService.addCamera(addCamera2).subscribe(data=>{
     console.log(data);
+    this.submitBtnName = 'Submit'
     this.color = 'green';
     this.check = data.result;
     setTimeout(()=>{
@@ -92,6 +95,10 @@ submit(){
     },1000)
     if(data.result == 'Successfully added camera!'){
       this.router.navigate(['admin/viewCamera']);
+    }
+    else if(data =='Camera already exists!'){
+      this.color = 'green';
+    this.check = data;
     }
   },(err)=>{
     // console.log(err);

@@ -14,13 +14,13 @@ export class ShowroomsComponent implements OnInit{
   vType?:String='ShowRoom Type';
    names!:any[];
    showroomNames!:any[];
-   types=['2-wheeler','4-wheeler']
+   types=['2-wheeler','4-wheeler'];
+   err=''
   constructor(private router: Router,private showroomService:ShowroomService){
   }
   ngOnInit(): void {
     this.showroomService.getDealerships().subscribe(data=>{
       this.names = data;
-      
     })
   }
 
@@ -57,6 +57,10 @@ sendShowRoom(){
     showRoomName:this.showRoomName,
   }  
   console.log(sendDetails);
+  if(this.showRoomName == 'Select ShowRoom' || this.delarShipName=='delarShipName' || this.vType=='ShowRoom Type'){
+    this.err ='Please Select all options...'
+    return
+  }
   this.router.navigate(['superAdmin'],{
     queryParams:{name:this.delarShipName,type:this.vType,showRoomName:this.showRoomName}
   })

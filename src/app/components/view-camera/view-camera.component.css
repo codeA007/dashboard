@@ -3,6 +3,10 @@
   display: flex;
   align-items: center;
 }
+body{
+  overflow-y: hidden;
+  overflow-X: hidden;
+}
 .selector .four,
 .two,
 .addShowroom {
@@ -28,11 +32,16 @@
   /* margin: 10px 0; */
   align-self: center;
   margin: 7px 0;
+  /* overflow-y: hidden; */
 }
 .dataContainer img {
   width: 100px;
   height: 100px;
   object-fit: container;
+}
+
+.dropDown{
+  width: 220px;
 }
 
 .selectorContainer {
@@ -56,8 +65,9 @@ th {
 .viewCameraContainer {
   font-family: "Nunito", sans-serif;
   font-weight: bold;
-  margin-top: 35px;
+  margin-top: 20px;
   margin-left: 60px;
+  /* overflow-X: hidden; */
 }
 
 .checkCamera {

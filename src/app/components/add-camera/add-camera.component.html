@@ -25,9 +25,11 @@
         <div class="orContainer">
             <div class="orContain">
                 <div class="type1">
+                    <input type="text" placeholder="Enter ShowRoom Name" formControlName="showroomName">
                     <input required="true" type="text" placeholder="Enter IP address" formControlName="ipaddress"
                         (input)="rtps()">
                     <input type="text" placeholder="Enter Username" formControlName="username">
+                    
                     <input type="text" placeholder="Enter Password" formControlName="password">
                     <input type="text" placeholder="Enter PortNo" formControlName="port">
                     <input type="text" placeholder="Enter Department" formControlName="department">
@@ -44,7 +46,7 @@
             </div>
             <div class="submitDiv">
                 <button class="submit" [ngStyle]="{'display': (this.disableBtn==true) ? 'none' : 'block'}"
-                    class="submit" (click)="submit()">Submit</button>
+                    class="submit" (click)="submit()">{{submitBtnName}}</button>
             </div>
         </div>
     </from>

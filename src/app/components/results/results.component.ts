@@ -74,8 +74,9 @@ submit(){
   const formData: FormData = new FormData();
   formData.append('file',this.file);
   formData.append('company',this.showroomName);
-  formData.append('startDate',startD!);
-  formData.append('endDate',endD!);
+  formData.append('date','2023-04-15')
+  // formData.append('startDate',startD!);
+  // formData.append('endDate',endD!);
   console.log(startD);
   
   console.log(formData);

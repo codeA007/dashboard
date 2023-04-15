@@ -42,7 +42,7 @@ const routes: Routes = [
   // {path:'addCamera',component:AddCameraComponent},
   {path:'showroom',
   loadChildren:()=>import('./showr/showr.module').then(mod=>mod.ShowrModule),
-  // canActivate:[AuthGuard]
+  canActivate:[AuthGuard]
 },
 {path:'account',
 loadChildren:()=>import('./account/account.module').then(mod=>mod.AccountModule),

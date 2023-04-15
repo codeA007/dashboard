@@ -25,6 +25,19 @@
     <app-error errorMessage="{{errorMessage}}" displayStatus="{{errorDisplayStatus}}" (retryBtn)="retry()"></app-error>
     
     <div class="viewCameraContainer">
+        <div class="row">
+            <div class="col">
+                <div ngbDropdown class="d-inline-block drop">
+                    <button  type="button" class="btn btn-outline-primary dropDown" id="dropdownBasic1" ngbDropdownToggle>
+                        {{showroomName}}
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button class="dropDown" (click)="showroom(this.name)" ngbDropdownItem
+                            *ngFor="let name of this.names;index as i;">{{name}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- <a routerLink='/addCamera' class="addShowroom">Add Camera </a> -->
         
        
