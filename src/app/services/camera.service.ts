@@ -67,7 +67,8 @@ geoFencing(data:Object):Observable<any>{
     }
     return this.http.post(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/download`,data,{observe:'response',responseType:'arraybuffer'})
   }
-  anprData(){
-    return this.http.get<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getallanpr`);
+  anprData(data:any){
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/getallanpr`,data,{headers:header});
   }
 }

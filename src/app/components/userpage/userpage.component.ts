@@ -84,7 +84,7 @@ export class UserpageComponent implements OnInit {
   start(){
     // console.log(this.showroomName);
     let start = {
-      showroomName:'hero',
+      showroomName:'',
       startANPR:this.startANPR
     }
     this.btnName = 'STOP';
@@ -98,8 +98,11 @@ export class UserpageComponent implements OnInit {
       }
       if(data.result == 'STARTED'){
         this.startANPR = false;
+        let data={
+          showroomName:''
+        }
         this.id =setInterval(()=>{
-          this.cameraService.anprData().subscribe(data => {
+          this.cameraService.anprData(data).subscribe(data => {
             console.log(data);
             if(data){
               this.datas = data;

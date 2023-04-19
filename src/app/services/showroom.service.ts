@@ -44,6 +44,7 @@ export class ShowroomService {
   }
 
   getSearchResults(data:any):Observable<any>{
-    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/search`,data)
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/search`,data,{headers:header})
   }
 }

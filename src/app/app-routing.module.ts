@@ -29,6 +29,7 @@ const routes: Routes = [
   {path:'admin',component:AdminpageComponent,canActivate:[AdminGuard] },
   {path:'showrooms',component:ShowroomsComponent,canActivate:[AuthGuard]},
   {path:'analytics',component:AnalyticsComponent,},
+  // {path:'admin/results',component:ResultsComponent},
   {path:'admin/results',component:ResultsComponent,canActivate:[AdminGuard]},
   {path:'admin/search',component:SearchComponent,canActivate:[AdminGuard] },
   {path:'admin/addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
@@ -46,6 +47,7 @@ const routes: Routes = [
 },
 {path:'account',
 loadChildren:()=>import('./account/account.module').then(mod=>mod.AccountModule),
+canActivate:[AuthGuard]
 }
 ];
 

@@ -6,7 +6,7 @@ import { AddShowroomComponent } from './add-showroom/add-showroom.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // import {HeaderComponent} from '../components/header/header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HeaderComponent } from '../components/header/header.component';
+// import { HeaderComponent } from '../components/header/header.component';
 import { AppModule } from '../app.module';
 import { AdddelarshipComponent } from './adddelarship/adddelarship.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

@@ -62,6 +62,7 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
       this.resultsRoute='/admin/results';
       this.home='/admin';
     }
+    if(this.router.url == '/admin/viewCamera'){
     this.show = true;
     console.log(`Bearer ${localStorage.getItem('token')}`);
     this.showroomService.getShowroomsList().subscribe((data)=>{
@@ -69,7 +70,32 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
       console.log(data);
       this.show=false;
     })
-   
+  }
+  else if(this.router.url == '/user/viewCamera'){
+    this.show = true;
+    let data={
+      showroomName:''
+    }
+    this.timer = setInterval(()=>{
+      this.cameraService.viewCamera(data).subscribe((data)=>{
+        this.show=false;
+        
+        this.datas=data
+        console.log(this.datas);
+        this.show = false;
+      },(err)=>{
+        this.errorMessage = err.statusText+'😢😥';      
+        this.errorDisplayStatus = true;
+        this.show = false;
+        this.ngOnDestroy();
+        if(err.error.msg=='Token has expired'){
+          localStorage.removeItem('token');
+          this.router.navigate(['/login']);
+          this.ngOnDestroy()
+        }
+      })
+    },this.time)
+  }
     // this.cameraService.viewCamera().subscribe((data)=>{
     //   this.datas=data
     //   console.log(this.datas);

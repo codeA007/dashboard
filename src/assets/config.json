@@ -1,7 +1,7 @@
 {
     "superAdminEdit":true,
     "adminEdit":false,
-    "ip":"192.168.1.112",
+    "ip":"192.168.1.105",
     "port":"5000",
     "timmer":2000,
     "viewCameraTimer":4000

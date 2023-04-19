@@ -39,8 +39,8 @@ fileUpload(event:any){
 selected: { startDate: dayjs.Dayjs |any; endDate: dayjs.Dayjs |any };
   constructor(private cameraService:CameraService, private showRoomService:ShowroomService,private router:Router,private datePipe:DatePipe) {
     this.selected = {
-      startDate: dayjs('2023-01-01T00:00Z'),
-      endDate: dayjs('2023-02-20T00:00Z')
+      startDate: dayjs(new Date()),
+      endDate: dayjs(new Date())
     };
   }
   ngOnInit(): void {
@@ -69,8 +69,10 @@ submit(){
     // file:this.file,
     // date:this.model
   }
-  let startD  = this.datePipe.transform(this.selected.startDate.$d,'YYYY-MM-dd');
-  let endD  = this.datePipe.transform(this.selected.endDate.$d,'YYYY-MM-dd');
+  let startD  = this.datePipe.transform(this.selected.startDate.$d,'YYYY-MM-dd'+':'+this.selected.startDate.$H+':'+this.selected.startDate.$m);
+  console.log(this.selected.startDate);
+  
+  let endD  = this.datePipe.transform(this.selected.endDate.$d,'YYYY-MM-dd'+':'+this.selected.endDate.$H+':'+this.selected.endDate.$m);
   const formData: FormData = new FormData();
   formData.append('file',this.file);
   formData.append('company',this.showroomName);
@@ -82,17 +84,17 @@ submit(){
   console.log(formData);
   
   this.cameraService.uploadFile(formData).subscribe(data=>{
-    console.log(formData);
     if(data){
-       this.color = 'green';
-    this.check = data.message;
-    setTimeout(()=>{
-      this.color = '';
-      this.check = ''
-    },1000)
+      this.color = 'green';
+      this.check = data.message;
+      setTimeout(()=>{
+        this.color = '';
+        this.check = ''
+      },1000)
     }
     console.log(data);
   },(err)=>{
+    console.log(formData,"data..");
     if(err){
       this.color = 'red';
    this.check = err.message;

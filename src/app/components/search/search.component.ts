@@ -34,7 +34,8 @@ export class SearchComponent  implements OnInit{
   searchRoute= '';
   viewCameraRoute='';
   resultsRoute='';
-  home=''
+  home='';
+  pa!:any;
   ip=`http://${(Options as any).default.ip}:${(Options as any).default.port}`;
 constructor(private router: Router,private route:ActivatedRoute,private datePipe:DatePipe,private showroomService:ShowroomService,private cameraService:CameraService){
   // selectedMoments: { startDate: Moment | any, endDate: Moment | any }
@@ -47,6 +48,7 @@ ngOnInit(): void {
   this.showroomService.getShowroomsList().subscribe((data)=>{
     this.names = data.showrooms;
     console.log(data);
+    this.pa = this.router.url;
   }) 
   if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
     console.log(this.router.url,"url");
@@ -65,6 +67,7 @@ ngOnInit(): void {
   }
 }
 submit(){
+  if(this.router.url == '/admin/search'){
   if(this.showroomName=='Select ShowRoomName'){
     this.check='please Select showroom Name';
     this.color='red';
@@ -75,14 +78,27 @@ submit(){
     ,2000)
     return
   }
+}
   let startD  = this.datePipe.transform(this.selected.startDate.$d,'YYYY-MM-dd');
   let endD  = this.datePipe.transform(this.selected.endDate.$d,'YYYY-MM-dd');
+  let name;
   // let endDate = this.selected.endDate.$d;
   // console.log(startD);
+  console.log(this.pa);
+  
+  if(this.pa == '/admin/search'){
+    name = this.showroomName
+  }
+  else{
+    name='';
+  }
   let data={
+    showroomName:name,
     startDate:startD,
     endDate:endD
   }
+  console.log(data,"search");
+  
   // let s = this.datePipe.transform(startD,'YYYY-MM-dd'); 
   console.log(data);
   this.showroomService.getSearchResults(data).subscribe(data=>{

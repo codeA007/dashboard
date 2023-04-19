@@ -21,7 +21,7 @@
             </div>
         </div>
         <input class="date" type="text" ngxDaterangepickerMd [timePicker]="true" [timePickerSeconds]="true"
-        [timePickerIncrement]="15" [timePicker24Hour]="false" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
+        [timePickerIncrement]="15" [timePicker24Hour]="true" [locale]="{ format: 'DD/MM/YYYY HH:mm:ss' }"
         [(ngModel)]="selected" class="form-control" />
         <input type="file" (change)="fileUpload($event)" accept=".xls,.xlsx" class=" form-control"  id="customFile">
         <button class="submit" (click)="submit()">submit</button>

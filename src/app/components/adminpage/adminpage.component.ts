@@ -122,9 +122,12 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
         return
       }
       if(data.result == 'STARTED'){
+        let data={
+          showroomName:this.showroomName,
+        }
         this.startANPR = false;
         this.id =setInterval(()=>{
-          this.cameraService.anprData().subscribe(data => {
+          this.cameraService.anprData(data).subscribe(data => {
             console.log(data);
             if(data){
               this.datas = data;
@@ -144,6 +147,11 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
          //   id:'Any'
          // }
          //  ];
+         },(err)=>{
+          if(err){
+            this.btnName = 'TRY AGAIN'
+            this.ngOnDestroy();
+          }
          })
        },this.timmer)
       }

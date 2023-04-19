@@ -32,6 +32,7 @@ names!:any[]
 
 ngOnInit(): void {
   navigator.geolocation.getCurrentPosition((position) => {
+    // console.log();
     console.log(position,"po");
     this.latitude = position.coords.latitude;
     this.longitude =position.coords.longitude;
