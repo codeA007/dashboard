@@ -1,6 +1,6 @@
 import { Component,OnInit ,Input} from '@angular/core';
 // import { Router } from '@angular/router';
-import { faBars,faCameraRetro,faPoll,faList,faSearch,faHome} from '@fortawesome/free-solid-svg-icons';
+import { faBars,faCameraRetro,faPoll,faList,faSearch,faHome,faMailBulk} from '@fortawesome/free-solid-svg-icons';
 import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 // import { Input } from '@angular/core';
 
@@ -29,4 +29,5 @@ export class Sidebar2Component implements OnInit {
   faList = faList;
   search = faSearch;
   home=faHome;
+  mail=faMailBulk;
 }

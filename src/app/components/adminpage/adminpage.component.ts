@@ -1,5 +1,5 @@
 import { Component,OnInit,OnDestroy} from '@angular/core';
-import { faCameraRetro,faPoll,faList,faSearch} from '@fortawesome/free-solid-svg-icons';
+import { faCameraRetro,faPoll,faList,faSearch,faMailBulk} from '@fortawesome/free-solid-svg-icons';
 import { ShowroomService } from '../../services/showroom.service';
 import { CameraService } from '../../services/camera.service';
 import {DataService} from '../../data.service';

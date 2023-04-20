@@ -216,10 +216,10 @@ editCamera(data:any){
 editDone(){
 this.displayStatus = false;
 console.log(this.editCameraForm.value);
-let newData = {...this.editCameraForm.value,id:this.id,showroomName:this.showroomName}
-this.cameraService.editCamera(newData).subscribe((data)=>{
-  console.log(data,"data");
-  this.datas = data
+  let newData = {...this.editCameraForm.value,id:this.id,showroomName:this.showroomName}
+  this.cameraService.editCamera(newData).subscribe((data)=>{
+    console.log(data,"data");
+    this.datas = data
 })
 }
 retry(){

@@ -4,7 +4,7 @@ import { NgbDatepickerModule, NgbOffcanvas, OffcanvasDismissReasons } from '@ng-
 
 import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
-import { faBars,faCameraRetro,faPoll,faList,faArrowRight} from '@fortawesome/free-solid-svg-icons';
+import { faBars,faCameraRetro,faPoll,faList,faArrowRight,faMailBulk} from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -18,6 +18,7 @@ faPoll = faPoll;
 faList = faList;
 arrow = faArrowRight;
 show=false;
+mail=faMailBulk;
 // @Input() searchRoute='';
   @Input() viewCameraRoute='';
   @Input() resultsRoute='';

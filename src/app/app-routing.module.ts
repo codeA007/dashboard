@@ -16,6 +16,7 @@ import { FabricjsComponent } from './components/fabricjs/fabricjs.component';
 import { AddCameraComponent } from './components/add-camera/add-camera.component';
 import {ViewCameraComponent} from './components/view-camera/view-camera.component';
 import { SearchComponent } from './components/search/search.component';
+import { MailComponent } from './components/mail/mail.component';
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 const routes: Routes = [
@@ -26,7 +27,7 @@ const routes: Routes = [
   // {path:'superAdmin',component:SuperadminComponent,canActivate:[AuthGuard]},
   // {path:'superAdmin',component:SuperadminComponent,canActivate:[]},
   // {path:'admin',component:AdminpageComponent, },
-  {path:'admin',component:AdminpageComponent,canActivate:[AdminGuard] },
+  {path:'admin',component:AdminpageComponent, },
   {path:'showrooms',component:ShowroomsComponent,canActivate:[AuthGuard]},
   {path:'analytics',component:AnalyticsComponent,},
   // {path:'admin/results',component:ResultsComponent},
@@ -34,8 +35,10 @@ const routes: Routes = [
   {path:'admin/search',component:SearchComponent,canActivate:[AdminGuard] },
   {path:'admin/addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
   {path:'admin/viewCamera',component:ViewCameraComponent,canActivate:[AdminGuard] },
+  {path:'admin/mail',component:MailComponent, },
   {path:'user',component:UserpageComponent ,canActivate:[UserGuard]},
   {path:'user/viewCamera',component:ViewCameraComponent,canActivate:[UserGuard] },
+
   {path:'user/search',component:SearchComponent,canActivate:[UserGuard] },
   {path:'user/results',component:ResultsComponent,canActivate:[UserGuard] },
   // {path:'user/search',component:ViewCameraComponent,canActivate:[UserGuard] },

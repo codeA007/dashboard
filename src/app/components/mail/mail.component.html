@@ -1,0 +1,25 @@
+<div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
+    <div class="modalBoxContainer">
+        <h4>Add details</h4>
+        <form action="" [formGroup]="mailDetails">
+            <label>Enter Emails</label>
+            <input type="text" formControlName="emails" placeholder="Ex:email@email.com,email@email.com"
+            >
+            <label>Enter ccs</label>
+            <input type="text" placeholder=" Ex: email@email.com,email@email.com" formControlName="ccs">
+            <label>Select time</label>
+            <!-- <input type="text" placeholder="Enter Time" formControlName="time"> -->
+            <ngb-timepicker [(ngModel)]="time"  [ngModelOptions]=" 
+            {standalone: true}"></ngb-timepicker>
+            <button class="submitD" (click)="submit()">Submit</button>
+        </form>
+    </div>
+</div>
+<app-header name={{name}}></app-header>
+<div>
+<app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
+</div>
+<div class="mailContainer">
+    <button class="addMail" (click)="add()">Add Details</button>
+
+</div>

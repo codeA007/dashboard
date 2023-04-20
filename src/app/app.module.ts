@@ -25,6 +25,7 @@ import { AddCameraComponent } from './components/add-camera/add-camera.component
 import { ViewCameraComponent } from './components/view-camera/view-camera.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedcomponentsModule } from './sharedcomponents/sharedcomponents.module';
+// import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxImageZoomModule } from 'ngx-image-zoom';
 import { ErrorComponent } from './components/error/error.component';
@@ -38,6 +39,9 @@ import { SearchComponent } from './components/search/search.component';
 import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.component';
 import FileSaver from 'file-saver'
 import { DatePipe } from '@angular/common';
+import { MailComponent } from './components/mail/mail.component';
+import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+// import {TimePickerModule} from 'ngx-bootstrap/timepicker'
 // import { EditImageComponent } from './components/edit-image/edit-image.component';
 
 
@@ -66,6 +70,7 @@ import { DatePipe } from '@angular/common';
     Sidebar2Component,
     SearchComponent,
     UserSidebarComponent,
+    MailComponent,
  
     // EditImageComponent
   ],
@@ -74,6 +79,7 @@ import { DatePipe } from '@angular/common';
   // ],
   imports: [
     NgxPaginationModule,
+    NgbTimepickerModule,  
     BrowserModule,
     AppRoutingModule,
     NgbModule,
