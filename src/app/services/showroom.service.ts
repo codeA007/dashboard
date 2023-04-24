@@ -47,4 +47,8 @@ export class ShowroomService {
     let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
     return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/search`,data,{headers:header})
   }
+  sendMailDetails(data:any):Observable<any>{
+    let header = new HttpHeaders().set("Authorization", "Bearer "+localStorage.getItem('token'));
+    return this.http.post<any>(`http://${ (Options as any).default.ip}:${(Options as any).default.port}/mail`,data,{headers:header})
+  }
 }

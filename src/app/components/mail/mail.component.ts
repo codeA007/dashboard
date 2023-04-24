@@ -2,6 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { FormGroup,FormControl,FormControlName } from '@angular/forms';
 // import { NgbTimepickerModule } from '@ng-bootstrap/ng-bootstrap';
+import { ShowroomService } from '../../services/showroom.service';
 
 @Component({
   selector: 'app-mail',
@@ -11,8 +12,9 @@ import { FormGroup,FormControl,FormControlName } from '@angular/forms';
   // imports: [NgbTimepickerModule],
 })
 export class MailComponent implements OnInit {
+
   time = { hour: 13, minute: 30 };
-constructor(private router: Router){}
+constructor(private router: Router,private showroomService:ShowroomService){}
 searchRoute= '';
 viewCameraRoute='';
 resultsRoute='';
@@ -20,9 +22,15 @@ displayStatus= false;
 home='';
 showSideBar= true;
 name='Admin';
+color='';
+check='';
 emails=['email@email.com','email@email.com']
 ccs=['email@email.com','email@email.com']
 mailDetails = new FormGroup({
+  senderMail:new FormControl(''),
+  password:new FormControl(''),
+  portNo:new FormControl(''),
+  domain:new FormControl(''),
   emails:new FormControl(''),
   ccs:new FormControl(''),
   // time:new FormControl(''),
@@ -59,9 +67,28 @@ submit(){
   let data={
     emails:emails,
     ccs:ccs,
-    time:time
+    time:time,
+    senderMail:this.mailDetails.value.senderMail,
+    password:this.mailDetails.value.password,
+    port:this.mailDetails.value.portNo,
+    domain:this.mailDetails.value.domain,
   }
   console.log(data);
   this.displayStatus =  false;
+  this.showroomService.sendMailDetails(data).subscribe(data=>{
+    this.color = 'green';
+    this.check = data.result;
+    setTimeout(()=>{
+      this.color = '';
+      this.check = ''
+    },1000)
+  },(err)=>{
+    this.color = 'red';
+    this.check = 'error Please Try Again!!';
+    setTimeout(()=>{
+      this.color = '';
+      this.check = ''
+    },1000)
+  })
 }
 }

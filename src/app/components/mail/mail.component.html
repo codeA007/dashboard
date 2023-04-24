@@ -1,7 +1,25 @@
+<app-header name={{name}}></app-header>
+<div>
+<app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
+</div>
+<p class="error2" [ngStyle]="{background:color}">{{check}}</p>
+<div class="mailContainer">
 <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
     <div class="modalBoxContainer">
         <h4>Add details</h4>
         <form action="" [formGroup]="mailDetails">
+            <label> Enter Your Email Id</label>
+            <input type="text" formControlName="senderMail" placeholder="email@email.com"
+            >
+            <label> Enter Password</label>
+            <input type="text" formControlName="password" placeholder="password"
+            >
+            <label>Enter Port Number</label>
+            <input type="text" formControlName="portNo" placeholder="port No"
+            >
+            <label>Enter Domain</label>
+            <input type="text" formControlName="domain" placeholder="Ex:gmail or yandex"
+            >
             <label>Enter Emails</label>
             <input type="text" formControlName="emails" placeholder="Ex:email@email.com,email@email.com"
             >
@@ -15,11 +33,7 @@
         </form>
     </div>
 </div>
-<app-header name={{name}}></app-header>
-<div>
-<app-sidebar2 homepage="{{home}}" searchRoute="{{searchRoute}}" viewCameraRoute="{{viewCameraRoute}}" resultsRoute="{{resultsRoute}}"></app-sidebar2>
-</div>
-<div class="mailContainer">
+
     <button class="addMail" (click)="add()">Add Details</button>
 
 </div>

@@ -9,6 +9,11 @@
   font-family: "Nunito", sans-serif;;
 }
 
+.mailContainer{
+  display: flex;
+  justify-content: center;
+}
+
 .searchContainer input{
     width: 400px;
     margin-right: 10px;
@@ -285,16 +290,18 @@ th {
 }
 
 .modalBoxContainer {
+  padding-top: 155px;
   position: relative;
   justify-content: center;
   align-items: center;
-  top: 5%;
+  top: 1%;
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 500px;
+  height: 570px;
   background: #273c75;
   border-radius: 10px;
+  overflow-y: scroll;
 }
 form {
   display: flex;
@@ -304,7 +311,7 @@ form {
 }
 
 form Input {
-  margin: 10px 0;
+  margin: 8px 0;
   border: none;
   padding: 8px 2px;
   border-radius: 3px;
@@ -386,4 +393,8 @@ fa-icon{
   flex-shrink: 0;
   flex-grow: 0;
   text-align: center;
+}
+
+.error2{
+  color: white;
 }

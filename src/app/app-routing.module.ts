@@ -35,7 +35,7 @@ const routes: Routes = [
   {path:'admin/search',component:SearchComponent,canActivate:[AdminGuard] },
   {path:'admin/addCamera',component:AddCameraComponent,canActivate:[AdminGuard]},
   {path:'admin/viewCamera',component:ViewCameraComponent,canActivate:[AdminGuard] },
-  {path:'admin/mail',component:MailComponent, },
+  {path:'admin/mail',component:MailComponent,canActivate:[AdminGuard] },
   {path:'user',component:UserpageComponent ,canActivate:[UserGuard]},
   {path:'user/viewCamera',component:ViewCameraComponent,canActivate:[UserGuard] },
 
