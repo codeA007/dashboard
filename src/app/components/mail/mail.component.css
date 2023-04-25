@@ -398,3 +398,9 @@ fa-icon{
 .error2{
   color: white;
 }
+
+.error3{
+  margin: 0;
+  text-align: center;
+  color: red;
+}

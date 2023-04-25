@@ -7,6 +7,7 @@
 <div class="modalContainer" [style]="{'display': (this.displayStatus==true)?'flex':'none'}">
     <div class="modalBoxContainer">
         <h4>Add details</h4>
+        <h3 class="error3">{{this.error}}</h3>
         <form action="" [formGroup]="mailDetails">
             <label> Enter Your Email Id</label>
             <input type="text" formControlName="senderMail" placeholder="email@email.com"

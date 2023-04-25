@@ -27,7 +27,7 @@ const routes: Routes = [
   // {path:'superAdmin',component:SuperadminComponent,canActivate:[AuthGuard]},
   // {path:'superAdmin',component:SuperadminComponent,canActivate:[]},
   // {path:'admin',component:AdminpageComponent, },
-  {path:'admin',component:AdminpageComponent, },
+  {path:'admin',component:AdminpageComponent,canActivate:[AdminGuard] },
   {path:'showrooms',component:ShowroomsComponent,canActivate:[AuthGuard]},
   {path:'analytics',component:AnalyticsComponent,},
   // {path:'admin/results',component:ResultsComponent},

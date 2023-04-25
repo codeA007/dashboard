@@ -24,6 +24,7 @@ showSideBar= true;
 name='Admin';
 color='';
 check='';
+error!:String;
 emails=['email@email.com','email@email.com']
 ccs=['email@email.com','email@email.com']
 mailDetails = new FormGroup({
@@ -64,6 +65,10 @@ submit(){
   let emails =this.mailDetails.value.emails?.split(",");
   let ccs =this.mailDetails.value.ccs?.split(",");
  let time = this.time.hour + ":"+this.time.minute;
+ if(this.mailDetails.value.emails==''||this.mailDetails.value.senderMail==''||this.mailDetails.value.password==''||this.mailDetails.value.portNo||this.mailDetails.value.domain==''){
+  this.error='Please Fill details Correctly!!'
+  return
+ }
   let data={
     emails:emails,
     ccs:ccs,
