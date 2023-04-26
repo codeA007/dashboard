@@ -62,6 +62,11 @@ selected: { startDate: dayjs.Dayjs |any; endDate: dayjs.Dayjs |any };
     this.showRoomService.getShowroomsList().subscribe((data)=>{
       this.names = data.showrooms;
       console.log(data);
+    },(err)=>{
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      }
     }) 
   }
 submit(){

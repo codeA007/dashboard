@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class AdddelarshipComponent {
   errorMessage: any;
+  emessage='';
   errorDisplayStatus=false;
   constructor(private showroomService:ShowroomService ,private router:Router){}
   addShowroom =new FormGroup({
@@ -20,6 +21,10 @@ export class AdddelarshipComponent {
 
   submitShowroomDetails(){
     console.log(this.addShowroom.value)
+    if(this.addShowroom.value.dealershipName==''||this.addShowroom.value.email==''||this.addShowroom.value.password==''){
+      this.emessage='Please fill all details';
+      return
+    }
     this.showroomService.addDealership(this.addShowroom.value).subscribe((data)=>{
       if(data.result == 'Dealership added successfully'){
         this.router.navigate(['/showrooms']);
@@ -27,6 +32,10 @@ export class AdddelarshipComponent {
     },(err)=>{
       this.errorMessage = err.statusText;
       this.errorDisplayStatus = true;
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      }
     })    
   }
 }

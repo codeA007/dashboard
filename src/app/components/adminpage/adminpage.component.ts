@@ -6,6 +6,7 @@ import {DataService} from '../../data.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as Options from '../../../assets/config.json';
+// import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
   selector: 'app-adminpage',
@@ -13,12 +14,18 @@ import * as Options from '../../../assets/config.json';
   styleUrls: ['./adminpage.component.css']
 })
 export class AdminpageComponent implements OnInit ,OnDestroy{
-  constructor(private showroomService:ShowroomService,private dataService: DataService,private sanatizer:DomSanitizer,private cameraService:CameraService){}
+  constructor(private showroomService:ShowroomService,private dataService: DataService,private sanatizer:DomSanitizer,private cameraService:CameraService,private router:Router){}
   names=[]
   ngOnInit(): void {
     this.showroomService.getShowroomsList().subscribe((data)=>{
       this.names = data.showrooms;
       console.log(data);
+    },(err)=>{
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+        this.ngOnDestroy()
+      }
     }) 
   }
   page = 1;
@@ -33,6 +40,8 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
   startANPR=true;
   check?:String='';
   color:String='';
+  errorMessage = 'error';
+  errorDisplayStatus = false;
   timmer = (Options as any).default.timmer;
   showroomName:String='Select ShowRoomName';
   // ip=`http://${(Options as any).default.ip}/${(Options as any).default.port}`;
@@ -85,7 +94,11 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
     this.imgUrl = this.ip+'/getNumberplate/'+image.NP_img_path;
     console.log(this.showImg);
    }
-
+   retry(){
+    console.log('retry');
+    this.errorDisplayStatus = false;
+    this.ngOnInit();
+  }
    vImage(image:any){
     console.log(image);
     this.showImg ='true'
@@ -151,12 +164,22 @@ export class AdminpageComponent implements OnInit ,OnDestroy{
           if(err){
             this.btnName = 'TRY AGAIN'
             this.ngOnDestroy();
+            if(err.error.msg=='Token has expired'){
+              localStorage.removeItem('token');
+              this.router.navigate(['/login']);
+              this.ngOnDestroy()
+            }
           }
          })
        },this.timmer)
       }
     },(err)=>{
       this.btnName = 'TRY AGAIN'
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+        this.ngOnDestroy()
+      }
     })
   }
 

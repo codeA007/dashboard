@@ -18,6 +18,7 @@ export class AddShowroomComponent implements OnInit {
   locationJs:any;
   latitude?:Number;
   longitude?:Number;
+  emessage='';
   vType?:String='ShowRoom Type';
   types=['2-wheeler','4-wheeler'];
 addShowroom =new FormGroup({
@@ -47,6 +48,11 @@ ngOnInit(): void {
     // });
     console.log(this.names);
     
+  },(err)=>{
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   })
 }
 delarship(name:any){
@@ -56,13 +62,21 @@ typeBtn(type:string){
   this.vType = type;
 }
 submitShowroomDetails(){
-  // if(this.addShowroom.value.showroomName==''||this.addShowroom.value.email==''||this.addShowroom.value.)
+  if(this.delarShipName=='delarShipName'||this.addShowroom.value.showroomName==''||this.addShowroom.value.email==''||this.addShowroom.value.location==''||this.addShowroom.value.password){
+    this.emessage ='Please Fill All details';
+    return
+  }
   let newData = {...this.addShowroom.value,latitude:this.latitude,longitude:this.longitude,dealerShip:this.delarShipName,type:this.vType};
 console.log(newData);
 this.showroomService.addShowroom(newData).subscribe(data=>{
   console.log(data);
   if(data){
     this.router.navigate(['/showrooms']);
+  }
+},(err)=>{
+  if(err.error.msg=='Token has expired'){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 })
 }

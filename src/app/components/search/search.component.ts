@@ -49,6 +49,11 @@ ngOnInit(): void {
     this.names = data.showrooms;
     console.log(data);
     this.pa = this.router.url;
+  },(err)=>{
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   }) 
   if(this.router.url == '/user/search'||this.router.url =='/user/viewCamera'|| this.router.url =='/user/results'){
     console.log(this.router.url,"url");
@@ -114,6 +119,10 @@ submit(){
     }
   },(err)=>{
     this.err=err.message;
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   })
 }
 showroom(name:any){

@@ -21,6 +21,11 @@ export class ShowroomsComponent implements OnInit{
   ngOnInit(): void {
     this.showroomService.getDealerships().subscribe(data=>{
       this.names = data;
+    },(err)=>{
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      }
     })
   }
 
@@ -41,6 +46,11 @@ delarship(name:any){
   this.showroomService.getSuperAdminShowrooms(data).subscribe((data)=>{
     console.log(data);
     this.showroomNames = data;
+  },(err)=>{
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }
   })
 }
 typeBtn(type:string){

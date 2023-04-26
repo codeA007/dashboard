@@ -31,6 +31,11 @@ export class AddCameraComponent implements OnInit {
     }
     this.cameraService.getBrandNames().subscribe(data=>{
      this.names = data
+    },(err)=>{
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+      }
     })
   }
   disableBtn:any = false;
@@ -76,6 +81,15 @@ addCamera = new FormGroup(
 // }); 
 
 submit(){
+  if(this.brandName == 'Brand Name'){
+    this.color = 'red';
+    this.check = 'Please select brand name!'
+    setTimeout(()=>{
+      this.color = '';
+      this.check = ''
+    },1500)
+    return
+  }
   this.submitBtnName = 'Submiting...'
   // console.log({...this.addCamera.value ,brandName:this.brandName});
   // ({...this.addCamera.value ,brand:this.brandName});
@@ -92,7 +106,7 @@ submit(){
     setTimeout(()=>{
       this.color = '';
       this.check = ''
-    },1000)
+    },1500)
     if(data.result == 'Successfully added camera!'){
       this.router.navigate(['admin/viewCamera']);
     }
@@ -105,6 +119,7 @@ submit(){
     
     this.errorMessage = err.statusText;
     this.errorDisplayStatus = true;
+    this.submitBtnName=='Submit';
     if(err.error.msg=='Token has expired'){
       localStorage.removeItem('token');
       this.router.navigate(['/login']);

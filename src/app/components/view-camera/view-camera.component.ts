@@ -32,12 +32,12 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
   datas:any[]=[];
   timer!: NodeJS.Timer;;
   errorMessage = 'error';
+  errorDisplayStatus = false;
   searchRoute= '';
   viewCameraRoute='';
   resultsRoute='';
   home=''
   time =(Options as any).default.viewCameraTimer
-  errorDisplayStatus = false;
   editCameraForm = new FormGroup({
     cameraname:new FormControl(''),
     ipaddress:new FormControl(''),
@@ -69,6 +69,16 @@ export class ViewCameraComponent implements OnInit,OnDestroy {
       this.names = data.showrooms;
       console.log(data);
       this.show=false;
+    },(err)=>{
+      this.errorMessage = err.statusText+'😢😥';      
+      this.errorDisplayStatus = true;
+      this.show = false;
+      this.ngOnDestroy();
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
+        this.ngOnDestroy()
+      }
     })
   }
   else if(this.router.url == '/user/viewCamera'){
@@ -198,6 +208,10 @@ this.cameraService.checkCamera().subscribe(data =>{
   if(err.status == 400){
     this.errorMessage ='Bad Request Please Try Again 🔁';
   }
+  if(err.error.msg=='Token has expired'){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 })
 
 }
@@ -220,6 +234,11 @@ console.log(this.editCameraForm.value);
   this.cameraService.editCamera(newData).subscribe((data)=>{
     console.log(data,"data");
     this.datas = data
+},(err)=>{
+  if(err.error.msg=='Token has expired'){
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
+  }
 })
 }
 retry(){
@@ -239,8 +258,10 @@ deleteCamera(data:any){
     console.log(data);
     this.datas = data
   },(err)=>{
-    console.log(err); 
-  })
+    if(err.error.msg=='Token has expired'){
+      localStorage.removeItem('token');
+      this.router.navigate(['/login']);
+    }})
 }
 
 }

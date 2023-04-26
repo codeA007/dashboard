@@ -5,6 +5,7 @@ import { Router,ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 import { CameraService } from '../../services/camera.service';
 import { ShowroomService } from '../../services/showroom.service';
 import * as Options from '../../../assets/config.json';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-userpage',
@@ -22,7 +23,7 @@ export class UserpageComponent implements OnInit {
   btnName='START';
   startANPR=true;
   timmer = (Options as any).default.timmer;
-  constructor(private dataService: DataService,private showroomService:ShowroomService,private cameraService:CameraService){}
+  constructor(private dataService: DataService,private showroomService:ShowroomService,private cameraService:CameraService,private router:Router){}
 
   ngOnInit() {
     // setTimeout(()=>{
@@ -128,6 +129,10 @@ export class UserpageComponent implements OnInit {
     },(err)=>{
       if(err){
         this.btnName = 'TRY AGAIN'
+      }
+      if(err.error.msg=='Token has expired'){
+        localStorage.removeItem('token');
+        this.router.navigate(['/login']);
       }
     })
   }
